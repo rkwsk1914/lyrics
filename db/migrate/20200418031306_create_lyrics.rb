@@ -1,0 +1,12 @@
+class CreateLyrics < ActiveRecord::Migration[5.2]
+  def change
+    create_table :lyrics do |t|
+      t.string :title
+      t.text :content
+      t.string :comment
+      t.references :user, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end

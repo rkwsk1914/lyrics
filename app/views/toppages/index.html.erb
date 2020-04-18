@@ -1,5 +1,9 @@
-<div class="row">
-    <h1>Lyrics</h1>
-    <%= link_to 'Sign Up', signup_path %>
-    <a href="#">Login</a>
+<div class="row mx-auto">
+        <h1 class="text-center col-12 mb-4 mt-4">Lyrics</h1>
+        <div class="col-6 text-center">
+            <%= link_to 'Sign Up', signup_path, class: 'col-6 btn btn-secondary'%>
+        </div>
+        <div class="col-6 text-center">
+            <%= link_to 'Login', login_path, class: 'col-6 btn btn-secondary'%>
+        </div>
 </div>
