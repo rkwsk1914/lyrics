@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @lyrics = @user.lyrics.order(id: :desc).page(params[:page]).per(25)
+    counts(@user)
   end
   
   def new
@@ -44,6 +45,18 @@ class UsersController < ApplicationController
   end
   
   def destroy
+  end
+
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page]).per(25)
+    counts(@user)
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page]).per(25)
+    counts(@user)
   end
   
   private

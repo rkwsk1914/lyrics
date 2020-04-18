@@ -24,5 +24,6 @@ cc =  "
 "
 
 (1..100).each do |number|
-  Lyric.create(title: 'test title ' + number.to_s, content: cc, comment: 'test case', user_id: 1)
+  Lyric.create(title: 'test title ' + number.to_s, content: cc, comment: 'test case', user_id: number)
+  User.create(name: 'TEST-USER-' + number.to_s, email: 'test' + number.to_s + '@exam.com', password: 'test', password_confirmation: 'test',)
 end

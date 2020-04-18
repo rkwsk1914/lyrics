@@ -9,7 +9,7 @@
     <% if @user == current_user %>
         <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block my-3" %>
     <% else %>
-        <button type="button" class="btn btn-secondary">follow</button>
+        <%= render 'relationships/follow_button', user: @user %>
     <% end %>
     </div>
     <div class="col-9">

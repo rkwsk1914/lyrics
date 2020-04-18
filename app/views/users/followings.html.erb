@@ -15,7 +15,8 @@
     <div class="col-9">
         <%= render 'tabbar' %>
         <div class="border border-top-0" style="height: 350px; overflow-y: scroll;">
-            <%= render 'lyrics/lyric_list' %>
+            <%= render 'follow_list', users: @followings %>
+        <div>
         <div>
     </div>
 </div>

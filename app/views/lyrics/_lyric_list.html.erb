@@ -1,11 +1,11 @@
-    <div class="col-10">
+    <div class="col-12">
         <% if @lyrics.any? %>
             <ul class="list-unstyled">
                 <% @lyrics.each do |lyric| %>
                     <% user = User.find(lyric.user_id)%>
                     <li class="media bg-info m-3 p-3">
                         <dvi>
-                            <%= link_to @user, class: "text-decoration-none" do %>
+                            <%= link_to user, class: "text-decoration-none" do %>
                                 <img src="<%= gravatar_url(user, { size: 50 }) %>" class="mr-3 col-12" alt="..." style="border-radius: 50%;">
                                 <div class="text-center">
                                     <span><%= user.name %></span>

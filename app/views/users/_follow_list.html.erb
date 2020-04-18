@@ -1,0 +1,23 @@
+    <div class="col-12">
+        <% if users.any? %>
+            <ul class="list-unstyled">
+                <% users.each do |user| %>
+                    <%# user = User.find(follows.follow_id)%>
+                    <li class="bg-info m-3 p-3">
+                        <%= link_to user, class: "media text-decoration-none col-9" do %>
+                            <img src="<%= gravatar_url(user, { size: 50 }) %>" class="mr-3" alt="..." style="border-radius: 50%;">
+                            <div class="media-body ml-3">
+                                <h5 class="mt-0 mb-1"><%= user.name %></h5>
+                                <section>
+                                    <%= user.profile %>
+                                </section>
+                            </div>
+                        <% end %>
+                        <div class="col-3">
+                            <%= render 'relationships/follow_button' ,user: user %>
+                        </div>
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
+    </div>

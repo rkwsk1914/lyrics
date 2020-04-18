@@ -11,14 +11,14 @@ class LyricsController < ApplicationController
   end
   
   def new
-    @lyric = current_user.lyrics.build(lyrics_params)
+    @lyric = Lyric.new
   end
   
   def create
     @lyric = current_user.lyrics.build(lyrics_params)
     
     if @lyric.save
-      flash[:success] = 'POST' + @lyric.name
+      flash[:success] = 'POST' + @lyric.title
       redirect_to @lyric
     else
       flash.now[:danger] = 'Fail POST !'
