@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in, only: [:index, :show]
-
+  before_action :require_user_logged_in
+  before_action :correct_user, only: [:edit, :update, :destroy]
   
   def index
     @users = User.order(id: :desc).page(params[:page]).per(25)
@@ -59,9 +59,21 @@ class UsersController < ApplicationController
     counts(@user)
   end
   
+  def likes
+    @user = User.find(params[:id])
+    @likes = @user.favorites.page(params[:page]).per(25)
+    counts(@user)
+  end
+
   private
   
   def user_params
     params.require(:user).permit(:name, :email, :profile, :password, :password_confirmation)
+  end
+
+  def correct_user
+    unless @user == current_user
+      redirect_to user_path(params[:id])
+    end
   end
 end

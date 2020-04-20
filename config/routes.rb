@@ -11,9 +11,17 @@ Rails.application.routes.draw do
     member do
       get :followings
       get :followers
+      get :likes
     end
   end
   
+  resources :lyrics, only: [:index, :show, :new, :create] do
+    member do
+      get :likers
+    end
+  end
+  
+  resources :favorites, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :users
   resources :lyrics

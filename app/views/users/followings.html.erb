@@ -4,7 +4,7 @@
         <h1 class="text-center">User</h1>
     </dvi>
     <div class="col-3">
-        <%= render 'user_card' %>
+        <%= render 'user_card', user: @user %>
         <% if @user == current_user %>
             <%= link_to 'POST', new_lyric_path, class: "btn btn-secondary col-6 mt-3" %>
             <%= link_to 'Edit', edit_user_path, class: "btn btn-light col-3 offset-2 mt-3" %>
@@ -15,8 +15,7 @@
     <div class="col-9">
         <%= render 'tabbar' %>
         <div class="border border-top-0" style="height: 350px; overflow-y: scroll;">
-            <%= render 'follow_list', users: @followings %>
-        <div>
-        <div>
+            <%= render 'follow_list', follows: @followings %>
+        </div>
     </div>
 </div>

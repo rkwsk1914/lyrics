@@ -2,6 +2,7 @@
     <div class="col-sm-12">
         <h1 class="text-center col-sm-12 pt-3 pb-3">Sign Up</h1>
         <%= form_with(model: @user, local: true) do |form| %>
+            <%= render 'layouts/error_message', model: @user %>
             <div class="form-group row">
                 <div class="col-sm-2">
                     <%= form.label :name, 'Name', class: 'col-form-label col-form-label' %>
@@ -34,9 +35,7 @@
                     <%= form.password_field :password_confirmation, class: 'form-control' %>
                 </div>
             </div>
-                <div style='display: none'>
-                    <%= form.text_field :profile, value:'hello' %>
-                </div>
+                <%= hidden_field_tag :profile, 'hello' %>
             <div class="form-group row d-flex justify-content-center">
                 <%= form.submit 'Sign Up', class: 'btn btn-secondary btn-block col-3' %>
             </div>

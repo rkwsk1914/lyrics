@@ -12,7 +12,7 @@
                                 </div>
                             <% end %>
                             <div class="text-center">
-                                <i class="far fa-star"></i><!--<i class="fas fa-star"></i>-->
+                                <%= render 'favorites/favorite_button', lyric: lyric %>
                             </div>
                         </dvi>
                         <%= link_to lyric, class: "media-body ml-3 text-decoration-none text-white" do %>
@@ -26,6 +26,7 @@
                             </section>
                             <section>
                                 <%= lyric.comment %>
+                                <%= lyric.id %>
                             </section>
                         <% end %>
                     </li>

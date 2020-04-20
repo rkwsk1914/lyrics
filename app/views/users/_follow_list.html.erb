@@ -1,9 +1,8 @@
     <div class="col-12">
-        <% if users.any? %>
+        <% if follows.any? %>
             <ul class="list-unstyled">
-                <% users.each do |user| %>
-                    <%# user = User.find(follows.follow_id)%>
-                    <li class="bg-info m-3 p-3">
+                <% follows.each do |user| %>
+                    <li class="bg-info m-3 p-3 d-flex justify-content-between">
                         <%= link_to user, class: "media text-decoration-none col-9" do %>
                             <img src="<%= gravatar_url(user, { size: 50 }) %>" class="mr-3" alt="..." style="border-radius: 50%;">
                             <div class="media-body ml-3">
