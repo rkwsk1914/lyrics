@@ -18,10 +18,10 @@ class LyricsController < ApplicationController
     @lyric = current_user.lyrics.build(lyrics_params)
     
     if @lyric.save
-      flash[:success] = 'POST' + @lyric.title
+      flash[:success] = '『' + @lyric.title + '』を投稿しました。/　Post "' + @lyric.title + '"!!'
       redirect_to @lyric
     else
-      flash.now[:danger] = 'Fail POST !'
+      flash.now[:danger] = 'Lyricの投稿に失敗しました。 / Fail POST!'
       render :new
     end 
   end
@@ -34,15 +34,21 @@ class LyricsController < ApplicationController
     @lyric = Lyric.find(params[:id])
     
     if @lyric.update(lyrics_params)
-      flash[:success] = 'Update Lyric'
+      flash[:success] = '『' + @lyric.title + '』を更新しました。/ Update "' + @lyric.title + '"!'
       redirect_to @lyric
     else
-      flash.now[:danger] = 'Fail to Update Lyric'
+      flash.now[:danger] = 'Lyricの更新に失敗しました。/Fail to Update Lyric!'
       render :edit
     end
   end
   
   def destroy
+    if current_user.likes?(@lyric)
+      current_user.unlike(@lyric)
+    end
+    @lyric.destroy
+    flash[:success] = '『' + @lyric.title + '』を削除しました。/ Delete "' + @lyric.title + '".'
+    redirect_back(fallback_location: root_path)
   end
   
   private

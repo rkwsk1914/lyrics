@@ -4,14 +4,14 @@ class RelationshipsController < ApplicationController
   def create
     user = User.find(params[:follow_id])
     current_user.follow(user)
-    flash[:success] = 'ユーザをフォローしました。'
+    flash[:success] = user.name + 'をフォローしました。/ Follow ' + user.name + '!'
     redirect_back(fallback_location: root_path)
   end
 
   def destroy
     user = User.find(params[:follow_id])
     current_user.unfollow(user)
-    flash[:success] = 'ユーザのフォローを解除しました。'
+    flash[:secondary] = user.name + 'のフォローを解除しました。/ Cancel follow ' + user.name + '.'
     redirect_back(fallback_location: root_path)
   end
 

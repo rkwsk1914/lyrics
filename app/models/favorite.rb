@@ -1,3 +1,4 @@
 class Favorite < ApplicationRecord
-  belongs_to :Lyric
+  belongs_to :user
+  belongs_to :lyric
 end

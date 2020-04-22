@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
-  before_action :require_user_logged_in
-  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :require_user_logged_in, except: [:new, :create]
+  before_action :correct_user, only: [:edit, :update]
   
-  def index
-    @users = User.order(id: :desc).page(params[:page]).per(25)
-  end
+  #def index
+  #  @users = User.order(id: :desc).page(params[:page]).per(25)
+  #end
   
   def show
     @user = User.find(params[:id])
     @lyrics = @user.lyrics.order(id: :desc).page(params[:page]).per(25)
+    @current_user = current_user
     counts(@user)
   end
   
@@ -20,10 +21,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-      flash[:success] = 'Welcome!!' + @user.name
-      redirect_to lyrics_path
+      flash[:success] = 'ようこそ' + @user.name + '! / Welcome ' + @user.name + ' !!'
+      session[:user_id] = @user.id
+      redirect_to @user
     else
-      flash.now[:danger] = 'Fail Sign Up !'
+      flash.now[:danger] = 'ユーザー登録に失敗しました。/ Fail Sign Up !'
       render :new
     end 
   end
@@ -36,16 +38,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update(user_params)
-      flash[:success] = 'Renew Profile'
+      flash[:success] = 'アカウント情報を更新しました。/ Updated account information.'
       redirect_to @user
     else
-      flash.now[:danger] = 'Fail Sign Up !'
+      flash.now[:danger] = 'アカウント情報の更新に失敗しました。 / Fail updated account information. !'
       render :edit
     end
   end
   
-  def destroy
-  end
+#  def destroy
+#  end
 
   def followings
     @user = User.find(params[:id])
@@ -72,6 +74,7 @@ class UsersController < ApplicationController
   end
 
   def correct_user
+    @user = User.find(params[:id])
     unless @user == current_user
       redirect_to user_path(params[:id])
     end

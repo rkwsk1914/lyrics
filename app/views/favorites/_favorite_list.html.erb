@@ -26,8 +26,13 @@
                             </section>
                             <section>
                                 <%= @lyric.comment %>
-                                <%= @lyric.id %>
                             </section>
+                            <div>
+                                <% if current_user == @lyric.user %>
+                                <% msg = '『' + @lyric.title + '』を削除しますか? / You sure to delete "' + @lyric.title +  '"?' %>
+                                    <%= link_to "Delete", @lyric, method: :delete, data: { confirm: msg }, class: 'btn btn-secondary btn-sm' %>
+                                <% end %>
+                            </div>
                         <% end %>
                     </li>
                 <% end %>

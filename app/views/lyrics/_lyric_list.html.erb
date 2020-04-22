@@ -6,7 +6,7 @@
                     <li class="media bg-info m-3 p-3">
                         <dvi>
                             <%= link_to user, class: "text-decoration-none" do %>
-                                <img src="<%= gravatar_url(user, { size: 50 }) %>" class="mr-3 col-12" alt="..." style="border-radius: 50%;">
+                                <img src="<%= gravatar_url(user, { size: 50 }) %>" class="card-img-top p-3 rounded-circle" alt= <% user.name %> >
                                 <div class="text-center">
                                     <span><%= user.name %></span>
                                 </div>
@@ -26,8 +26,13 @@
                             </section>
                             <section>
                                 <%= lyric.comment %>
-                                <%= lyric.id %>
                             </section>
+                            <div>
+                                <% if current_user == lyric.user %>
+                                <% msg = '『' + lyric.title + '』を削除しますか? / You sure to delete "' + lyric.title +  '"?' %>
+                                    <%= link_to "Delete", lyric, method: :delete, data: { confirm: msg }, class: 'btn btn-secondary btn-sm' %>
+                                <% end %>
+                            </div>
                         <% end %>
                     </li>
                 <% end %>

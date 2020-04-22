@@ -5,7 +5,7 @@
     </dvi>
     <% @user = User.find(@lyric.user_id)%>
     <div class="col-3">
-        <%= render 'users/user_card' %>
+        <%= render 'users/user_card', user: @user %>
     <% if @user == current_user %>
         <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block my-3" %>
     <% else %>

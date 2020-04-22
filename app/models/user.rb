@@ -42,6 +42,6 @@ class User < ApplicationRecord
   end
 
   def likes?(lyric)
-    self.favorites.include?(lyric)
+    self.likes.include?(lyric)
   end
 end
