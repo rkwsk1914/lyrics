@@ -6,6 +6,17 @@
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+  
+          <script>
+          /* bootstrap alertを4秒後に消す */
+            const FadeOutAlert = () => {
+              $('.animated').removeClass("fadeInDown");
+              $('.animated').addClass("fadeOutUp");
+            };
+            
+            $(window).on('load', () => setTimeout(FadeOutAlert, 3000));
+          </script>
+  
         </div>
     </div>
 <% end %>
