@@ -3,7 +3,7 @@
             <ul class="list-unstyled">
                 <% follows.each do |user| %>
                     <li class="bg-info m-3 p-3 d-flex justify-content-between">
-                        <%= link_to user, class: "media text-decoration-none col-9" do %>
+                        <%= link_to user, class: "media text-decoration-none col-9 text-white" do %>
                             <img src="<%= gravatar_url(user, { size: 50 }) %>" class="mr-3" alt="..." style="border-radius: 50%;">
                             <div class="media-body ml-3">
                                 <h5 class="mt-0 mb-1"><%= user.name %></h5>
