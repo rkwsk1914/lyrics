@@ -1,7 +1,10 @@
 <div class="row">
     <dvi class="col-12">
         <%= render 'layouts/navbar'%>
-        <h1 class="text-center">Lyric Detail</h1>
+        <div class="row d-flex justify-content-around my-3">
+            <h1 class="text-center col-6 offset-3">Lyric Detail</h1>
+            <%= link_to '←TOP', lyrics_path, class: 'btn btn-secondary btn-block col-1 my-2' %>
+        </div>
     </dvi>
     <% @user = User.find(@lyric.user_id)%>
     <div class="col-3">
@@ -13,11 +16,11 @@
     <% end %>
     </div>
     <div class="col-9">
-        <h2><%= @lyric.title %></h2>
-        <section class="border my-3">
+        <h2 class="text-center border p-2"><%= @lyric.title %></h2>
+        <section class="border my-3 h-75 p-2">
             <%= @lyric.content %>
         </section>
-        <section class="border my-3">
+        <section class="border my-3 p-2">
             <%= @lyric.comment %>
         </section>
     </div>

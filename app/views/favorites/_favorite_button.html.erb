@@ -1,11 +1,11 @@
   <% if current_user.likes?(lyric) %>
     <%= form_with(model: current_user.favorites.find_by(lyric_id: lyric.id), local: true, method: :delete) do |f| %>
       <%= hidden_field_tag :lyric_id, lyric.id %>
-      <%= f.submit '★', class: 'btn btn-ink btn-block text-decoration-none text-warning' %>
+      <%= f.submit '★', class: 'fav-btn btn btn-link btn-block text-decoration-none text-dark p-0', style: 'font-size: 20px;' %>
     <% end %>
   <% else %>
     <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
       <%= hidden_field_tag :lyric_id, lyric.id %>
-      <%= f.submit '☆', class: 'btn btn-link btn-block text-decoration-none text-dark' %>
+      <%= f.submit '☆', class: 'fav-btn btn btn-link btn-block text-decoration-none text-dark p-0', style: 'font-size: 20px;' %>
       <% end %>
   <% end %>

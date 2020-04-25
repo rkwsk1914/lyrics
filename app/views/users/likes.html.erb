@@ -1,7 +1,7 @@
 <div class="row">
     <dvi class="col-12">
         <%= render 'layouts/navbar'%>
-        <h1 class="text-center">User</h1>
+        <h1 class="text-center my-3">User</h1>
     </dvi>
     <div class="col-3">
         <%= render 'user_card',user: @user %>
@@ -14,8 +14,8 @@
     </div>
     <div class="col-9">
         <%= render 'tabbar' %>
-        <div class="border border-top-0" style="height: 350px; overflow-y: scroll;">
-            <%= render 'favorites/favorite_list', likes: @likes %>
+        <div class="border border-top-0 h-75" style="overflow-y: scroll;">
+            <%= render 'lyrics/lyric_list' %>
         <div>
     </div>
 </div>

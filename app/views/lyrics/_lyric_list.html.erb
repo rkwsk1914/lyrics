@@ -3,10 +3,10 @@
             <ul class="list-unstyled">
                 <% @lyrics.each do |lyric| %>
                     <% user = User.find(lyric.user_id)%>
-                    <li class="media bg-info m-3 p-3">
+                    <li class="media m-3 p-3", style="background-color: orange;" >
                         <dvi>
                             <%= link_to user, class: "text-decoration-none" do %>
-                                <img src="<%= gravatar_url(user, { size: 50 }) %>" class="card-img-top p-3 rounded-circle" alt= <% user.name %> >
+                                <img src="<%= gravatar_url(user, { size: 40 }) %>" class="card-img-top p-3 rounded-circle" alt= <% user.name %> >
                                 <div class="text-center">
                                     <span><%= user.name %></span>
                                 </div>
@@ -15,16 +15,16 @@
                                 <%= render 'favorites/favorite_button', lyric: lyric %>
                             </div>
                         </dvi>
-                        <%= link_to lyric, class: "media-body ml-3 text-decoration-none text-white" do %>
-                            <h5 class="mt-0 mb-1"><%= lyric.title %></h5>
-                            <section>
+                        <%= link_to lyric, class: "media-body ml-3 text-decoration-none text-dark" do %>
+                            <h5 class="mt-0 mb-1 bg-white p-2 "><%= lyric.title %></h5>
+                            <section class="p-2 mt-2 bg-white h-50">
                                 <% if lyric.content.length < 50 %>
                                     <%= lyric.content %>
                                 <% else %>
                                     <%= lyric.content.slice(0,50) %> ...
                                 <% end %>
                             </section>
-                            <section>
+                            <section class="p-2 mt-2 bg-white">
                                 <%= lyric.comment %>
                             </section>
                             <div>

@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @lyrics = @user.lyrics.order(id: :desc).page(params[:page]).per(25)
+    @lyrics = @user.lyrics.order(id: :desc) #.page(params[:page]).per(25)
     @current_user = current_user
     counts(@user)
   end
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   
   def likes
     @user = User.find(params[:id])
-    @likes = @user.favorites.page(params[:page]).per(25)
+    @lyrics = Lyric.joins(:favorites).where(favorites: {user_id: @user.id})
     counts(@user)
   end
 
