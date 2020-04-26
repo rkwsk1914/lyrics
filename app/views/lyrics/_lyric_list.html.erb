@@ -5,7 +5,7 @@
                     <% user = User.find(lyric.user_id)%>
                     <li class="media m-3 p-3", style="background-color: orange;" >
                         
-                        <dvi>
+                        <div>
                             <%= link_to user, class: "text-decoration-none d-none d-sm-block" do %>
                                 <img src="<%= gravatar_url(user, { size: 40 }) %>" class="card-img-top p-3 rounded-circle" alt= <% user.name %> >
                                 <div class="text-center d-none d-sm-block">
@@ -15,7 +15,7 @@
                             <div class="text-center">
                                 <%= render 'favorites/favorite_button', lyric: lyric %>
                             </div>
-                        </dvi>
+                        </div>
                         
                         <%= link_to lyric, class: "media-body ml-3 text-decoration-none text-dark col-11" do %>
                             <h5 class="mt-0 mb-1 bg-white p-2"><%= lyric.title %></h5>

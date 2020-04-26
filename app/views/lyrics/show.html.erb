@@ -1,12 +1,12 @@
 <div class="row">
-    <dvi class="col-12 px-0">
+    <div class="col-12 px-0">
         <%= render 'layouts/navbar'%>
         <div class="row d-flex justify-content-around my-3">
             <h1 class="text-center col-4 offset-3 d-none d-md-inline">Lyric Detail</h1>
             <h1 class="text-center col-12 d-inline d-md-none">Lyric Detail</h1>
             <%= link_to '←TOP', lyrics_path, class: 'btn btn-secondary btn-block col-1 my-3 d-none d-md-block' %>
         </div>
-    </dvi>
+    </div>
     <div class="col-10 mx-auto">
         <div class="row">
             <% @user = User.find(@lyric.user_id)%>
