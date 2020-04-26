@@ -5,6 +5,7 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
   has_secure_password
+  validates :profile, presence: true, length: { maximum: 50 }
   validates :password, presence: true, length: { minimum: 8 }, on: :create
   
   has_many :lyrics

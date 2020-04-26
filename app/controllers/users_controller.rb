@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = 'ようこそ' + @user.name + '! / Welcome ' + @user.name + ' !!'
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to login_path
     else
       flash.now[:danger] = 'ユーザー登録に失敗しました。/ Fail Sign Up !'
       render :new
