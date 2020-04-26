@@ -22,7 +22,9 @@
   <body class="m-0">
     <div class="container mw-100">
       <%= render 'layouts/flash_messages' %>
-      <%= render 'layouts/navbar'%>
+      <% if logged_in?%>
+        <%= render 'layouts/navbar'%>
+      <% end %>
       <%= yield %>
     </div>
     
