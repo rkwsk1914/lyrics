@@ -3,7 +3,7 @@
             <ul class="list-unstyled">
                 <% follows.each do |user| %>
                     <li class="m-3 p-3 d-flex justify-content-between" , style="background-color: orange;">
-                        <%= link_to user, class: "media text-decoration-none col-9 text-white" do %>
+                        <%= link_to user, class: "media text-decoration-none col-7 col-sm-9 text-white" do %>
                             <img src="<%= gravatar_url(user, { size: 50 }) %>" class="mr-3" alt="..." style="border-radius: 50%;">
                             <div class="media-body ml-3">
                                 <h5 class="mt-0 mb-1"><%= user.name %></h5>
@@ -12,7 +12,7 @@
                                 </section>
                             </div>
                         <% end %>
-                        <div class="col-3">
+                        <div class="col-5 col-sm-3 m-0">
                             <%= render 'relationships/follow_button' ,user: user %>
                         </div>
                     </li>

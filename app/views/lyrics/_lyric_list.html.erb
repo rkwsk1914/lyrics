@@ -4,10 +4,11 @@
                 <% @lyrics.each do |lyric| %>
                     <% user = User.find(lyric.user_id)%>
                     <li class="media m-3 p-3", style="background-color: orange;" >
+                        
                         <dvi>
-                            <%= link_to user, class: "text-decoration-none" do %>
+                            <%= link_to user, class: "text-decoration-none d-none d-sm-block" do %>
                                 <img src="<%= gravatar_url(user, { size: 40 }) %>" class="card-img-top p-3 rounded-circle" alt= <% user.name %> >
-                                <div class="text-center">
+                                <div class="text-center d-none d-sm-block">
                                     <span><%= user.name %></span>
                                 </div>
                             <% end %>
@@ -15,25 +16,26 @@
                                 <%= render 'favorites/favorite_button', lyric: lyric %>
                             </div>
                         </dvi>
-                        <%= link_to lyric, class: "media-body ml-3 text-decoration-none text-dark" do %>
-                            <h5 class="mt-0 mb-1 bg-white p-2 "><%= lyric.title %></h5>
-                            <section class="p-2 mt-2 bg-white h-50">
+                        
+                        <%= link_to lyric, class: "media-body ml-3 text-decoration-none text-dark col-11" do %>
+                            <h5 class="mt-0 mb-1 bg-white p-2"><%= lyric.title %></h5>
+                            <section class="p-2 mt-2 bg-white h-50 d-none d-sm-block">
                                 <% if lyric.content.length < 50 %>
                                     <%= lyric.content %>
                                 <% else %>
                                     <%= lyric.content.slice(0,50) %> ...
                                 <% end %>
                             </section>
-                            <section class="p-2 mt-2 bg-white">
+                            <section class="p-2 mt-2 bg-white d-none d-sm-block">
                                 <%= lyric.comment %>
                             </section>
-                            <div>
-                                <% if current_user == lyric.user %>
-                                <% msg = '『' + lyric.title + '』を削除しますか? / You sure to delete "' + lyric.title +  '"?' %>
-                                    <%= link_to "Delete", lyric, method: :delete, data: { confirm: msg }, class: 'btn btn-secondary btn-sm' %>
-                                <% end %>
-                            </div>
-                        <% end %>
+                        <% end %>    
+                        <div class="col-11 d-none">
+                            <% if current_user == lyric.user && op == 'user-page' %>
+                            <% msg = '『' + lyric.title + '』を削除しますか? / You sure to delete "' + lyric.title +  '"?' %>
+                                <%= link_to "Delete", lyric, method: :delete, data: { confirm: msg }, class: 'btn btn-secondary btn-sm' %>
+                            <% end %>
+                        </div>
                     </li>
                 <% end %>
             </ul>

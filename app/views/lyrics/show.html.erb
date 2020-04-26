@@ -2,29 +2,38 @@
     <dvi class="col-12 px-0">
         <%= render 'layouts/navbar'%>
         <div class="row d-flex justify-content-around my-3">
-            <h1 class="text-center col-4 offset-3">Lyric Detail</h1>
-            <%= link_to '←TOP', lyrics_path, class: 'btn btn-secondary btn-block col-1 my-3' %>
+            <h1 class="text-center col-4 offset-3 d-none d-md-inline">Lyric Detail</h1>
+            <h1 class="text-center col-12 d-inline d-md-none">Lyric Detail</h1>
+            <%= link_to '←TOP', lyrics_path, class: 'btn btn-secondary btn-block col-1 my-3 d-none d-md-block' %>
         </div>
     </dvi>
     <div class="col-10 mx-auto">
         <div class="row">
-        <% @user = User.find(@lyric.user_id)%>
-        <div class="col-3">
-            <%= render 'users/user_card', user: @user %>
-        <% if @user == current_user %>
-            <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block my-3" %>
-        <% else %>
-            <%= render 'relationships/follow_button', user: @user %>
-        <% end %>
-        </div>
-        <div class="col-9">
-            <h2 class="text-center border p-2"><%= @lyric.title %></h2>
-            <section class="border my-3 h-75 p-2">
-                <%= @lyric.content %>
-            </section>
-            <section class="border my-3 p-2">
-                <%= @lyric.comment %>
-            </section>
+            <% @user = User.find(@lyric.user_id)%>
+            <div class="col-md-3 d-none d-md-block">
+                <%= render 'users/user_card', user: @user %>
+            <% if @user == current_user %>
+                <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block my-3" %>
+            <% else %>
+                <%= render 'relationships/follow_button', user: @user %>
+            <% end %>
+            </div>
+            <div class="col-12 col-md-9 d-block">
+                <h2 class="text-center border p-2"><%= @lyric.title %></h2>
+                <section class="border my-3 mh-75 p-2">
+                    <%= @lyric.content %>
+                </section>
+                <section class="border my-3 p-2">
+                    <%= @lyric.comment %>
+                </section>
+            </div>
+            <div class="col-12 d-block d-md-none">
+                <%= render 'users/user_card', user: @user %>
+            <% if @user == current_user %>
+                <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block my-3" %>
+            <% else %>
+                <%= render 'relationships/follow_button', user: @user %>
+            <% end %>
             </div>
         </div>
     </div>
