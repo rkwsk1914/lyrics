@@ -63,3 +63,5 @@ group :production do
 end
 
 gem 'bootstrap', '~> 4.1.1'
+
+gem 'carrierwave'

@@ -6,8 +6,12 @@
                     <li class="media m-3 p-3", style="background-color: orange;" >
                         
                         <div>
-                            <%= link_to user, class: "text-decoration-none d-none d-sm-block" do %>
-                                <img src="<%= gravatar_url(user, { size: 40 }) %>" class="card-img-top p-3 rounded-circle" alt= <% user.name %> >
+                            <%= link_to user, class: "text-decoration-none d-none d-sm-block text-center" do %>
+                            <% if user.image? %>
+                                <img src="<%= user.image.url %>" class="border rounded-circle" style="width: 3rem; height: 3rem;"></img>
+                            <% else %>
+                                <p class="border rounded-circle bg-info" style="width: 3rem; height: 3rem;"></p>
+                            <% end %>
                                 <div class="text-center d-none d-sm-block">
                                     <span><%= user.name %></span>
                                 </div>
