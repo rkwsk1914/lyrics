@@ -14,7 +14,9 @@
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
-    <%= render 'users/current_user_card', user: @current_user %>
+    <% if logged_in?%>
+        <%= render 'users/current_user_card', user: @current_user %>
+    <% end %>
     <body class="m-0">
         <div class="container mw-100 m-0 p-0">
             <%= render 'layouts/flash_messages' %>
@@ -23,14 +25,18 @@
             <% end %>
             <div class="row">
                 <div class="col-10 col-sm-12 mx-auto p-0">
-                    <div class="position-fixed col-2 d-none d-sm-block mt-2">
-                        <%= render 'layouts/side_menu', user: @current_user %>
-                    </div>
+                    <% if logged_in?%>
+                        <div class="position-fixed col-2 d-none d-sm-block mt-2">
+                            <%= render 'layouts/side_menu', user: @current_user %>
+                        </div>
+                    <% end %>
                     <%= yield %>
                 </div>
-                <dvi class="col-12 position-fixed fixed-bottom bg-white border d-sm-none">
-                    <%= render 'layouts/under_menu', user: @current_user %>
-                </dvi>
+                <% if logged_in?%>
+                    <dvi class="col-12 position-fixed fixed-bottom bg-white border d-sm-none">
+                        <%= render 'layouts/under_menu', user: @current_user %>
+                    </dvi>
+                <% end %>
             </div>
         </div>
     </body>

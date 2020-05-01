@@ -11,6 +11,9 @@ class User < ApplicationRecord
   
   has_many :lyrics
   
+  has_many :sentmessages
+  has_many :receivemessages
+  
   has_many :favorites
   has_many :likes, through: :favorites, source: :lyric
   has_many :reverses_of_favorite, class_name: 'Favorite', foreign_key: 'lyric_id'
@@ -47,5 +50,9 @@ class User < ApplicationRecord
 
   def likes?(lyric)
     self.likes.include?(lyric)
+  end
+  
+  def sent
+    
   end
 end

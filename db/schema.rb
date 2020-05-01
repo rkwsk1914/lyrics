@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_020307) do
+ActiveRecord::Schema.define(version: 2020_05_01_095530) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 2020_04_30_020307) do
     t.index ["user_id"], name: "index_lyrics_on_user_id"
   end
 
+  create_table "receive_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id"
+    t.bigint "sent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sent_id"], name: "index_receive_messages_on_sent_id"
+    t.index ["user_id"], name: "index_receive_messages_on_user_id"
+  end
+
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "follow_id"
@@ -40,6 +50,16 @@ ActiveRecord::Schema.define(version: 2020_04_30_020307) do
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
     t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "sent_messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id"
+    t.bigint "sent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sent_id"], name: "index_sent_messages_on_sent_id"
+    t.index ["user_id"], name: "index_sent_messages_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,6 +75,10 @@ ActiveRecord::Schema.define(version: 2020_04_30_020307) do
   add_foreign_key "favorites", "lyrics"
   add_foreign_key "favorites", "users"
   add_foreign_key "lyrics", "users"
+  add_foreign_key "receive_messages", "users"
+  add_foreign_key "receive_messages", "users", column: "sent_id"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
+  add_foreign_key "sent_messages", "users"
+  add_foreign_key "sent_messages", "users", column: "sent_id"
 end
