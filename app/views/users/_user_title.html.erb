@@ -1,0 +1,20 @@
+<%= render 'users/other_user_card', user: user %>
+    <div class="my-4" data-toggle="tooltip" data-placement="right" title="User Card">
+        <!-- Button trigger modal -->
+        <a class="d-flex justify-content-center" data-toggle="modal" data-target="#other_user" style="cursor: pointer;">
+            <% if user.image? %>
+                <img 
+                 src="<%= user.image.url %>" 
+                 class="border rounded-circle" 
+                 style="width: 4rem; height: 4rem;"
+                >
+            <% else %>
+                <img 
+                 src="/user_icon.png" 
+                 class="border rounded-circle" 
+                 style="width: 4rem; height: 4rem;"
+                >
+            <% end %>
+            <h1 style="line-height: 4rem;"><%= user.name %></h1>
+        </a>
+    </div>

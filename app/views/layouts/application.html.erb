@@ -1,29 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>Lyrics</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+        <title>Lyrics</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <!-- Animate CSS -->
-    <%= stylesheet_link_tag "animate", :media => "all" %>
+        <!-- Animate CSS -->
+        <%= stylesheet_link_tag "animate", :media => "all" %>
     
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
-  </head>
-  
-  <body class="m-0">
-    <div class="container mw-100">
-      <%= render 'layouts/flash_messages' %>
-      <% if logged_in?%>
-        <%= render 'layouts/navbar'%>
-      <% end %>
-      <%= yield %>
-    </div>
-    
-  </body>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </head>
+    <%= render 'users/current_user_card', user: @current_user %>
+    <body class="m-0">
+        <div class="container mw-100 m-0 p-0">
+            <%= render 'layouts/flash_messages' %>
+            <% if logged_in?%>
+                <%= render 'layouts/navbar'%>
+            <% end %>
+            <div class="row">
+                <div class="col-10 col-sm-12 mx-auto p-0">
+                    <div class="position-fixed col-2 d-none d-sm-block mt-2">
+                        <%= render 'layouts/side_menu', user: @current_user %>
+                    </div>
+                    <%= yield %>
+                </div>
+                <dvi class="col-12 position-fixed fixed-bottom bg-white border d-sm-none">
+                    <%= render 'layouts/under_menu', user: @current_user %>
+                </dvi>
+            </div>
+        </div>
+    </body>
 </html>

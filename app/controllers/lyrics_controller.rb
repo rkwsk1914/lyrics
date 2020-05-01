@@ -4,10 +4,13 @@ class LyricsController < ApplicationController
 
   def index
     @lyrics = Lyric.order(id: :desc).page(params[:page]).per(25)
+    @user = User.find_by(id: session[:user_id])
   end
   
   def show
     @lyric = Lyric.find(params[:id])
+    @user = User.find(@lyric.user_id)
+    c_counts()
   end
   
   def new
@@ -28,6 +31,7 @@ class LyricsController < ApplicationController
   
   def edit
     @lyric = Lyric.find(params[:id])
+    @user = User.find(@lyric.user_id)
   end
   
   def update
@@ -43,12 +47,13 @@ class LyricsController < ApplicationController
   end
   
   def destroy
+    @user = User.find(@lyric.user_id)
     if current_user.likes?(@lyric)
       current_user.unlike(@lyric)
     end
     @lyric.destroy
     flash[:success] = '『' + @lyric.title + '』を削除しました。/ Delete "' + @lyric.title + '".'
-    redirect_back(fallback_location: root_path)
+    redirect_to @user
   end
   
   private

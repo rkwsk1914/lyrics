@@ -1,0 +1,21 @@
+<div class="col-10 d-flex justify-content-around mx-auto">
+    <!-- Button trigger modal -->
+    <a data-toggle="modal" data-target="#staticBackdrop" style="cursor: pointer;">
+        <% if user.image? %>
+            <img src="<%= user.image.url %>" class="border rounded-circle my-3 mx-2" style="width: 2.8rem; height: 2.8rem;">
+        <% else %>
+            <p class="border rounded-circle my-3 mx-2" style="width: 5rem; height: 5rem;"></p>
+        <% end %>
+    </a>
+    <a href="#" class="btn btn-block btn-link rounded-circle border my-3 mx-2" style="width: 2.5rem; height: 2.5rem;">
+        <i class="far fa-envelope"></i>
+    </a>
+<!--
+    <a href="#" class="btn btn-block btn-link rounded-circle border my-3 mx-2" style="width: 2.5rem; height: 2.5rem;">
+        <i class="far fa-handshake"></i>
+    </a>
+-->
+    <%= link_to new_lyric_path, class: "btn btn-block btn-success rounded-circle my-3 mx-2",style: "width: 2.5rem; height: 2.5rem;" do %>
+        <i class="fas fa-pen"></i>
+    <% end %>
+<div>

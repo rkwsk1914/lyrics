@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @lyrics = @user.lyrics.order(id: :desc) #.page(params[:page]).per(25)
     @current_user = current_user
     counts(@user)
+    c_counts()
   end
   
   def new
@@ -53,18 +54,21 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @followings = @user.followings.page(params[:page]).per(25)
     counts(@user)
+    c_counts()
   end
   
   def followers
     @user = User.find(params[:id])
     @followers = @user.followers.page(params[:page]).per(25)
     counts(@user)
+    c_counts()
   end
   
   def likes
     @user = User.find(params[:id])
     @lyrics = Lyric.joins(:favorites).where(favorites: {user_id: @user.id})
     counts(@user)
+    c_counts()
   end
 
   private

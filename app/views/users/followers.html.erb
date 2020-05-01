@@ -1,24 +1,7 @@
-<div class="row">
-    <div class="col-12 px-0">
-        <h1 class="text-center my-3">User</h1>
-    </div>
-    <div class="col-10 mx-auto">
-        <div class="row">
-            <div class="col-12 col-md-3">
-                <%= render 'user_card', user: @user %>
-                <% if @user == current_user %>
-                    <%= link_to 'POST', new_lyric_path, class: "btn btn-secondary col-6 my-3" %>
-                    <%= link_to 'Edit', edit_user_path, class: "btn btn-light col-3 offset-2 my-3" %>
-                <% else %>
-                    <%= render 'relationships/follow_button', user: @user%>
-                <% end %>
-            </div>
-            <div class="col-12 col-md-9">
-                <%= render 'tabbar' %>
-                <div class="border border-top-0 h-75" style="overflow-y: scroll;">
-                    <%= render 'follow_list', follows: @followers %>
-                </div>
-            </div>
-        </div>
+<%= render 'users/user_title', user: @user %>
+<div class="col-12 col-sm-9 offset-sm-2">
+    <%= render 'tabbar' %>
+    <div class="border border-top-0" style="height: 55vh; overflow-y: scroll;">
+        <%= render 'relationships/follow_list', follows: @followers %>
     </div>
 </div>

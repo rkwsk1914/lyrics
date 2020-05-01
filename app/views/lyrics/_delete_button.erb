@@ -1,0 +1,3 @@
+    <% msg = '『' + lyric.title + '』を削除しますか? / You sure to delete "' + lyric.title +  '"?' %>
+    <%= link_to "Delete", lyric, method: :delete, data: { confirm: msg }, 
+    class: 'col-sm-12 btn btn-outline-secondary btn-sm mt-1' %>

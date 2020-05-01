@@ -1,5 +1,5 @@
 <header>
-        <nav class="navbar navbar-expand-sm  navbar-light bg-light px-0">
+        <nav class="position-fixed col-12 navbar navbar-expand-sm navbar-light border-bottom px-0 bg-white" style="z-index: 3;">
             <!-- ロゴ -->
              <%= link_to 'Lyrics', lyrics_path, class: "navbar-brand col-2 offset-1" %>
             
@@ -43,6 +43,18 @@
                         </div>
                     </li>
                 </ul>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-sm  navbar-light border-bottom px-0">
+    
+            <!-- 高さ調整 -->
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- 高さ調整  -->
+            <div class="collapse navbar-collapse offset-7 col-2 text-center" id="nav-bar">
+                <button type="button" class="dropdown-toggle mr-2 btn btn-primary text-white">MENU</button>
             </div>
         </nav>
 </header>

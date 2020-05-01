@@ -1,41 +1,83 @@
-<div class="row">
-    <div class="col-12 px-0">
-        <div class="row d-flex justify-content-around my-3">
-            <h1 class="text-center col-4 offset-3 d-none d-md-inline">Lyric Detail</h1>
-            <h1 class="text-center col-12 d-inline d-md-none">Lyric Detail</h1>
-            <%= link_to '←TOP', lyrics_path, class: 'btn btn-secondary btn-block col-1 my-3 d-none d-md-block' %>
-        </div>
-    </div>
-    <div class="col-10 mx-auto">
-        <div class="row">
-            <% @user = User.find(@lyric.user_id)%>
-            <div class="col-md-3 d-none d-md-block">
-                <%= render 'users/user_card', user: @user %>
-            <% if @user == current_user %>
-                <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block my-3" %>
-            <% else %>
-                <%= render 'relationships/follow_button', user: @user %>
+<div class="offset-sm-2">
+    <h1 class="text-center my-3">Lyric Detail</h1>
+    <div class="row d-flex justify-content-around">
+        <div class="col-2 offset-1 d-none d-sm-block">
+            <%= link_to user_path(@user), style: "text-decoration: none; cursor: pointer;" do  %>
+                <% if @user.image? %>
+                    <img
+                     src="<%= @user.image.url %>" 
+                     class="border rounded-circle mx-auto" 
+                     style="display: block; width: 5rem; height: 5rem;"
+                    >
+                    <p class="text-center col-12"><%= @user.name %></p>
+                <% else %>
+                    <img 
+                     src="/user_icon.png" 
+                     class="border rounded-circle mx-auto" 
+                     style="display: block; width: 5rem; height: 5rem;"
+                    >
+                    <p class="text-center col-12"><%= @user.name %></p>
+                <% end %>
             <% end %>
-                <%= render 'favorites/favorite_button2', lyric: @lyric %>
+            <div class="">
+                <%= render 'favorites/favorite_button', lyric: @lyric %>
+                <% if @user == current_user %>
+                    <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block my-3" %>
+                    <%= render 'lyrics/delete_button', lyric: @lyric %>
+                <% else %>
+                    <%= render 'favorites/apply_button' %>
+                    <%= render 'favorites/comment_button' %>
+                <% end %>
             </div>
-            <div class="col-12 col-md-9 d-block">
-                <h2 class="text-center border p-2"><%= @lyric.title %></h2>
-                <section class="border my-3 mh-75 p-2">
+        </div>
+        <div class="col-10 d-block d-sm-none d-flex justify-content-between mb-3 mx-auto">
+            <%= link_to user_path(@user), style: "text-decoration: none; cursor: pointer;" do  %>
+                <% if @user.image? %>
+                    <img
+                     src="<%= @user.image.url %>" 
+                     class="border rounded-circle mx-auto" 
+                     style="display: block; width: 3rem; height: 3rem;"
+                    >
+                <% else %>
+                    <img 
+                     src="/user_icon.png" 
+                     class="border rounded-circle mx-auto" 
+                     style="display: block; width: 3rem; height: 3rem;"
+                    >
+                <% end %>
+            <% end %>
+            <div class="">
+                <%= render 'favorites/favorite_link', lyric: @lyric %>
+            </div>
+            <div class="">
+                <%= render 'favorites/apply_link' %>
+            </div>
+            <div class="">
+                <%= render 'favorites/comment_link' %>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6">
+            <div class="border">
+                <h4 class="text-center p-2"><%= @lyric.title %></h4>
+                <p class="text-right px-2">Lyric by <%= @user.name %></p>
+                <section class="my-3 mh-75 p-2">
                     <%= @lyric.content %>
                 </section>
+            </div>
+            <div class="my-3">
+                <h6>作者からのコメント</h6>
                 <section class="border my-3 p-2">
                     <%= @lyric.comment %>
                 </section>
             </div>
-            <div class="col-12 d-block d-md-none">
-                <%= render 'favorites/favorite_button2', lyric: @lyric %>
-                <%= render 'users/user_card', user: @user %>
-            <% if @user == current_user %>
-                <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block my-3" %>
-            <% else %>
-                <%= render 'relationships/follow_button', user: @user %>
-            <% end %>
+            <div class="mx-2 my-1 d-sm-none d-block">
+                <% if current_user == @lyric.user %>
+                    <%= render 'lyrics/edit_button', lyric: @lyric %>
+                    <%= render 'lyrics/delete_button', lyric: @lyric %>
+                <% end %>
             </div>
+        </div>
+        <div class="col-3">
         </div>
     </div>
 </div>

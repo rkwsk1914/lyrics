@@ -1,0 +1,38 @@
+<ul class="list-unstyled">
+    <li data-toggle="tooltip" data-placement="right" title="User Card" class="d-flex justify-content-end">
+        <!-- Button trigger modal -->
+        <a data-toggle="modal" data-target="#current_user" style="cursor: pointer;">
+            <% if user.image? %>
+                <img 
+                 src="<%= user.image.url %>" 
+                 class="border rounded-circle" 
+                 style="width: 4rem; height: 4rem;"
+                >
+            <% else %>
+                <img 
+                 src="/user_icon.png" 
+                 class="border rounded-circle" 
+                 style="width: 4rem; height: 4rem;"
+                >
+            <% end %>
+        </a>
+    </li>
+    <li data-toggle="tooltip" data-placement="right" title="Message" class="my-1 d-flex justify-content-end">
+        <a href="#" class="btn btn-block btn-link rounded-circle border mr-2" style="width: 3rem; height: 3rem;">
+            <i class="far fa-envelope"></i>
+        </a>
+    </li>
+<!--
+    <li data-toggle="tooltip" data-placement="right" title="Application" class="my-1 d-flex justify-content-end">
+        <a href="#" class="btn btn-block btn-link rounded-circle border mr-2" style="width: 3rem; height: 3rem;">
+            <i class="far fa-handshake"></i>
+        </a>
+    </li>
+-->
+    <li data-toggle="tooltip" data-placement="right" title="Lyric Post" class="my-1 d-flex justify-content-end">
+        <%= link_to new_lyric_path, class: "btn btn-block btn-outline-success rounded-circle mr-2",style: "width: 3rem; height: 3rem;" do %>
+            <i class="fas fa-pen"></i>
+        <% end %>
+    </li>
+</ul>
+

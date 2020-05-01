@@ -1,45 +1,63 @@
-    <div class="col-12">
+    <div class="col-12 p-0">
         <% if @lyrics.any? %>
             <ul class="list-unstyled">
                 <% @lyrics.each do |lyric| %>
                     <% user = User.find(lyric.user_id)%>
-                    <li class="media m-3 p-3", style="background-color: orange;" >
+                    <li class="media p-1 p-sm-3 border-bottom" >
                         
-                        <div>
-                            <%= link_to user, class: "text-decoration-none d-none d-sm-block text-center" do %>
-                            <% if user.image? %>
-                                <img src="<%= user.image.url %>" class="border rounded-circle" style="width: 3rem; height: 3rem;"></img>
-                            <% else %>
-                                <p class="border rounded-circle bg-info" style="width: 3rem; height: 3rem;"></p>
+                        <div class="row col-12 d-flex justify-content-start">
+                            <%= link_to user, class: "ml-3 media-body col-1 p-0", style: "text-decoration: none;" do %>
+                                <% if user.image? %>
+                                    <img 
+                                     src="<%= user.image.url %>" 
+                                     class="border rounded-circle" 
+                                     style="width: 3rem; height: 3rem;"
+                                    >
+                                <% else %>
+                                    <img 
+                                     src="/user_icon.png" 
+                                     class="border rounded-circle" 
+                                     style="width: 3rem; height: 3rem;"
+                                    >
+                                <% end %>
                             <% end %>
-                                <div class="text-center d-none d-sm-block">
-                                    <span><%= user.name %></span>
+                            
+                            <%= link_to lyric, class: "media-body text-dark col-11", style: "text-decoration: none;" do %>
+                                <div class="d-flex justify-content-start">
+                                    <h6 class="col-9"><%= lyric.title %></h6>
+                                    <small>by <%= user.name %></small>
                                 </div>
+                                <section class="pl-3" style="font-size: 0.9em;">
+                                    <% if lyric.content.length < 75 %>
+                                        <%= lyric.content %>
+                                    <% else %>
+                                        <%= lyric.content.slice(0,75) %> ...
+                                    <% end %>
+                                </section>
+                                <section class="pl-3 p-2 border my-2" style="font-size: 0.9em;">
+                                    <%= lyric.comment %>
+                                </section>
                             <% end %>
-                            <div class="text-center">
-                                <%= render 'favorites/favorite_button', lyric: lyric %>
+                            <div class="row col-12 d-flex justify-content-end p-0">
+                                <div class="d-flex justify-content-around col-7">
+                                    <div class="col-4">
+                                        <%= render 'favorites/favorite_link', lyric: lyric %>
+                                    </div>
+                                    <div class="col-4">
+                                        <% render 'favorites/apply_link' %>
+                                    </div>
+                                    <div class="col-4">
+                                        <% render 'favorites/comment_link' %>
+                                    </div>
+                                </div>
+                                <div class="mx-2 my-1">
+                                    <% if current_user == lyric.user && op == 'user-page' %>
+                                        <%= render 'lyrics/delete_button', lyric: lyric %>
+                                    <% end %>
+                                </div>
                             </div>
                         </div>
                         
-                        <%= link_to lyric, class: "media-body ml-3 text-decoration-none text-dark col-11" do %>
-                            <h5 class="mt-0 mb-1 bg-white p-2"><%= lyric.title %></h5>
-                            <section class="p-2 mt-2 bg-white h-50 d-none d-sm-block">
-                                <% if lyric.content.length < 50 %>
-                                    <%= lyric.content %>
-                                <% else %>
-                                    <%= lyric.content.slice(0,50) %> ...
-                                <% end %>
-                            </section>
-                            <section class="p-2 mt-2 bg-white d-none d-sm-block">
-                                <%= lyric.comment %>
-                            </section>
-                        <% end %>    
-                        <div class="col-11 d-none">
-                            <% if current_user == lyric.user && op == 'user-page' %>
-                            <% msg = '『' + lyric.title + '』を削除しますか? / You sure to delete "' + lyric.title +  '"?' %>
-                                <%= link_to "Delete", lyric, method: :delete, data: { confirm: msg }, class: 'btn btn-secondary btn-sm' %>
-                            <% end %>
-                        </div>
                     </li>
                 <% end %>
             </ul>
