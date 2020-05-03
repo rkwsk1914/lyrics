@@ -39,6 +39,7 @@
                 <% profile_default = 'はじめまして、よろしくお願いします。/ Hello! Nice to meet you!'  %>
                 <%= form.text_field :profile, value: profile_default, class: 'd-none' %>
             </div>
+            <%= hidden_field_tag :picture, nil %>
             <div class="form-group row d-flex justify-content-around">
                 <%= form.submit 'Sign Up', class: 'btn btn-secondary btn-block col-3 offset-4' %>
                 <%= link_to 'Back', root_url, class: 'btn btn-light btn-block col-3' %>
