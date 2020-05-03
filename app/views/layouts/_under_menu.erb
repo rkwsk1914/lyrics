@@ -1,9 +1,9 @@
 <div class="col-10 d-flex justify-content-around mx-auto">
     <!-- Button trigger modal -->
     <a data-toggle="modal" data-target="#staticBackdrop" style="cursor: pointer;">
-        <% if user.profile_image? %>
+        <% if user.picture? %>
             <img
-             src="<%= user.profile_image.to_s %>" 
+             src="<%= user.picture.to_s %>" 
              class="border rounded-circle my-3 mx-2" 
              style="width: 2.8rem; height: 2.8rem;"
             >

@@ -17,9 +17,9 @@
                     </div>
                     <div class="modal-body">
                         <div class="row d-flex justify-content-start pl-3">
-                            <% if user.profile_image? %>
+                            <% if user.picture? %>
                                 <img 
-                                 src="<%= user.profile_image.to_s %>" 
+                                 src="<%= user.picture.to_s %>" 
                                  class="border rounded-circle mx-3" 
                                  style="width: 4rem; height: 4rem;"
                                 >

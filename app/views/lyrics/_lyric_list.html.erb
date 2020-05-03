@@ -7,9 +7,9 @@
                         
                         <div class="row col-12 d-flex justify-content-start">
                             <%= link_to user, class: "ml-3 media-body col-1 p-0", style: "text-decoration: none;" do %>
-                                <% if user.profile_image? %>
+                                <% if user.picture? %>
                                     <img 
-                                     src="<%= user.profile_image.to_s %>" 
+                                     src="<%= user.picture.to_s %>" 
                                      class="border rounded-circle" 
                                      style="width: 3rem; height: 3rem;"
                                     >
