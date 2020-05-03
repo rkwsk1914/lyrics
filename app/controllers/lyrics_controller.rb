@@ -5,6 +5,7 @@ class LyricsController < ApplicationController
   def index
     @lyrics = Lyric.order(id: :desc).page(params[:page]).per(25)
     @user = User.find_by(id: session[:user_id])
+    c_counts()
   end
   
   def show

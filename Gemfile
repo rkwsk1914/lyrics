@@ -64,6 +64,11 @@ end
 
 gem 'bootstrap', '~> 4.1.1'
 
-gem 'carrierwave'
-
 gem 'font-awesome-sass', '~> 5.4.1'
+
+gem 'fog-aws'
+
+gem 'dotenv-rails'
+
+gem 'carrierwave', '~> 1.3.1'
+gem 'cloudinary' , '1.11.1'

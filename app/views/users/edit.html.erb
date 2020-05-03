@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center py-3">
     <% if @user.image? %>
         <img 
-         src="<%= @user.image.url %>" 
+         src="<%= @user.image.to_s %>" 
          class="border rounded-circle mx-2" 
          style="width: 4rem; height: 4rem;"
         >

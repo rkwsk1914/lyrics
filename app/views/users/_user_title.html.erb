@@ -4,7 +4,7 @@
         <a class="d-flex justify-content-center" data-toggle="modal" data-target="#other_user" style="cursor: pointer;">
             <% if user.image? %>
                 <img 
-                 src="<%= user.image.url %>" 
+                 src="<%= user.image.to_s %>" 
                  class="border rounded-circle" 
                  style="width: 4rem; height: 4rem;"
                 >
