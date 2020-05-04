@@ -2,5 +2,7 @@
     class: "btn btn-block btn-link rounded-circle border mr-2",
     style: "width: 3rem; height: 3rem;" do %>
     <i class="far fa-envelope"></i>
-    <span class="badge badge-secondary"><%= @count_unread %></span>
+    <% unless @count_unread == 0 %>
+        <span class="badge badge-secondary"><%= @count_unread %></span>
+    <% end %>
 <% end %>

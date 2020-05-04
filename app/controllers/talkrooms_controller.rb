@@ -3,9 +3,10 @@ class TalkroomsController < ApplicationController
     @sentroom = Talkroom.find(params[:id])
     @user = User.find(@sentroom.roommate_id)
     @receiveroom = Talkroom.find_by(user_id: @user.id, roommate_id: current_user.id)
+    message_read(@receiveroom)
     @message = @sentroom.messages.build
-    create_message_list()
     create_room_list()
+    create_message_list()
     counts(@user)
     c_counts()
   end
@@ -30,24 +31,25 @@ class TalkroomsController < ApplicationController
   
   def create_message_list
     if @sentroom && @receiveroom
-      @messages = Message.where("(talkroom_id = ?) OR (talkroom_id = ?)", @sentroom.id, @receiveroom.id)
+      @messages = Message.all.where("(talkroom_id = ?) OR (talkroom_id = ?)", @sentroom.id, @receiveroom.id)
     elsif @sentroom
-      @messages = Message.where(talkroom_id: @sentroom.id)
+      @messages = Message.all.where(talkroom_id: @sentroom.id)
     elsif @receiveroom  
-      @messages = Message.where(talkroom_id: @receiveroom.id)
+      @messages = Message.all.where(talkroom_id: @receiveroom.id)
     end
   end
   
   def create_room_list
-    @talkrooms = Talkroom.where(user_id: current_user.id)
+    @talkrooms = Talkroom.all.where(user_id: current_user.id)
   end
   
-  def message_read
-    @messages.each do |message|
-      if message.read == false
-        message.read = ture
+  def message_read(receiveroom)
+    messages = Message.all.where(talkroom_id: receiveroom.id)
+    messages.each do |message|
+      unless message.read == true
+        message.read = true
+        message.save
       end
     end
-    @message.save
   end
 end

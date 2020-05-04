@@ -4,11 +4,11 @@
             <%= render 'talkrooms/talkroom_list' %>
         </div>
         <% unless op == "talkroom_top" %>
-        <div class="col-8">
-            <h1><%= @user.name %></h1>
-            <%= render 'messages/message_list' %>
-            <%= render 'messages/message_form', message: @message %>
-        </div>
+            <div class="col-8">
+                <h1><%= @user.name %></h1>
+                <%= render 'messages/message_list' %>
+                <%= render 'messages/message_form', message: @message %>
+            </div>
         <% end %>
     </div>
 </div>

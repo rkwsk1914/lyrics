@@ -11,7 +11,9 @@
         >
             <%= roommate.name %>
             <% count_unread = counts_unread_oneroom(talkroom) %>
-            <span class="badge badge-secondary"><%= count_unread %></span>
+            <% unless count_unread == 0%>
+                <span class="badge badge-secondary"><%= count_unread %></span>
+            <% end %>
         </a>
     <% end %>
     </nav>
