@@ -1,13 +1,26 @@
 <%= form_with(model: message, local: true) do |form| %>
     <% render 'layouts/error_message', model: message %>
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <%= form.text_area :content, class: 'form-control', size: "10x1" %>
+    <div class="row d-flex justify-content-around">
+        <div class="col-11 form-group pr-0">
+            <%= form.text_area :content, class: 'form-control',id: "textarea", size: "10x1", style: "border-radius: 20px;" %>
+            <script type="text/javascript">
+                $(function() {
+                var lineHeight = parseInt($('#textarea').css('lineHeight'));
+                $('#textarea').on('input', function(evt) {
+                    let lines = ($(this).val() + '\n').match(/\n/g).length;
+                    $(this).height(lineHeight * lines);
+                });
+            });
+            </script>
         </div>
         <%= hidden_field_tag :talkroom_id, @sentroom.id %>
+        <div class="form-group col-1 mt-auto pl-0">
+        <%= form.button :type => "submit",
+          class: "btn btn-outline-secondary btn-block text-dark",
+          style: 'text-decoration: none; font-size: 1.2em;' do %>
+            <i class="far fa-paper-plane"></i>
+        <% end %>
+        </div>
     </div>
-    <div class="form-group row d-flex justify-content-around">
-        <%= form.submit @op, class: 'btn btn-secondary btn-block col-3 offset-4' %>
-        <%= link_to 'Back', user_path(current_user), class: 'btn btn-light btn-block col-3 m-0' %>
-    </div>
+    <% link_to 'Back', user_path(current_user), class: 'btn btn-light btn-block col-3 m-0' %>
 <% end %>

@@ -1,13 +1,39 @@
-<% if @messages.any? %>
-    <ul class="list-unstyled">
-    <% @messages.each do |message| %>
-        <% user = User.find(message.talkroom.user_id) %>
-        <li>
-            <%= user.name %>
-            <%= message.content %>
-            <%= message.read %>
-            <%= l message.created_at, format: :short %>
-        </li>
+<div id="contentBox" class="border px-0 col-12", 
+style="height: 70vh; overflow: scroll;" >
+<script>
+const MoveScrollBottom = () => {
+  $('#contentBox').scrollTop(($("#contentBox")[0].scrollHeight));
+};
+$(window).on('load', MoveScrollBottom());
+</script>
+    <% if @messages.any? %>
+        <ul class="list-unstyled">
+        <% @messages.each do |message| %>
+            <% user = User.find(message.talkroom.user_id) %>
+            <% if user == current_user %>
+                <li class="col-9 offset-3 d-flex justify-content-end my-4">
+                    <div class="mt-auto">
+                        <%= l message.created_at, format: :short %>
+                        <% message.read %>
+                    </div>
+                    <div class="border p-1 col-7", style="border-radius: 10px;">
+                        <%= message.content %>    
+                    </div>
+                    <%= user.name %>
+                </li>
+            <% else %>
+                <li class="col-9 d-flex justify-content-end my-4">
+                    <%= user.name %>
+                    <div class="border p-1 col-7", style="border-radius: 10px;">
+                        <%= message.content %>    
+                    </div>
+                    <div class="mt-auto">
+                        <%= l message.created_at, format: :short %>
+                        <% message.read %>
+                    </div>
+                </li>
+            <% end %>
+        <% end %>
+        </ul>
     <% end %>
-    </ul>
-<% end %>
+</div>
