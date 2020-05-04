@@ -7,19 +7,7 @@
                         
                         <div class="row col-12 d-flex justify-content-start">
                             <%= link_to user, class: "ml-3 media-body col-1 p-0", style: "text-decoration: none;" do %>
-                                <% if user.picture? %>
-                                    <img 
-                                     src="<%= user.picture.to_s %>" 
-                                     class="border rounded-circle" 
-                                     style="width: 3rem; height: 3rem;"
-                                    >
-                                <% else %>
-                                    <img 
-                                     src="/user_icon.png" 
-                                     class="border rounded-circle" 
-                                     style="width: 3rem; height: 3rem;"
-                                    >
-                                <% end %>
+                                <%= render 'users/user_image_button',rem: "3rem", user: user %>
                             <% end %>
                             
                             <%= link_to lyric, class: "media-body text-dark col-11", style: "text-decoration: none;" do %>

@@ -32,19 +32,7 @@
         </div>
         <div class="col-10 d-block d-sm-none d-flex justify-content-between mb-3 mx-auto">
             <%= link_to user_path(@user), style: "text-decoration: none; cursor: pointer;" do  %>
-                <% if @user.image? %>
-                    <img
-                     src="<%= @user.image.url %>" 
-                     class="border rounded-circle mx-auto" 
-                     style="display: block; width: 3rem; height: 3rem;"
-                    >
-                <% else %>
-                    <img 
-                     src="/user_icon.png" 
-                     class="border rounded-circle mx-auto" 
-                     style="display: block; width: 3rem; height: 3rem;"
-                    >
-                <% end %>
+                <%= render 'users/user_image_button',rem: "3rem", user: @user %>
             <% end %>
             <div class="">
                 <%= render 'favorites/favorite_link', lyric: @lyric %>

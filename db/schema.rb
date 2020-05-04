@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_120927) do
+ActiveRecord::Schema.define(version: 2020_05_04_010246) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 2020_05_03_120927) do
     t.index ["user_id"], name: "index_lyrics_on_user_id"
   end
 
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "talkroom_id"
+    t.index ["talkroom_id"], name: "index_messages_on_talkroom_id"
+  end
+
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "follow_id"
@@ -40,6 +48,16 @@ ActiveRecord::Schema.define(version: 2020_05_03_120927) do
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
     t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "talkrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "roommate_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["roommate_id"], name: "index_talkrooms_on_roommate_id"
+    t.index ["user_id", "roommate_id"], name: "index_talkrooms_on_user_id_and_roommate_id", unique: true
+    t.index ["user_id"], name: "index_talkrooms_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,6 +73,9 @@ ActiveRecord::Schema.define(version: 2020_05_03_120927) do
   add_foreign_key "favorites", "lyrics"
   add_foreign_key "favorites", "users"
   add_foreign_key "lyrics", "users"
+  add_foreign_key "messages", "talkrooms"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
+  add_foreign_key "talkrooms", "users"
+  add_foreign_key "talkrooms", "users", column: "roommate_id"
 end

@@ -1,0 +1,31 @@
+<% unless current_user == user %>
+  <% if current_user.talking?(user) %>
+    <%= hidden_field_tag :roommate_id, user.id %>
+    <% @talkroom = Talkroom.find_by(user_id: current_user.id, roommate_id: user.id) %>
+      <%= link_to talkroom_path(@talkroom),
+          class: "btn btn-outline-secondary btn-block text-dark",
+          style: "font-size: 1.2em;" do %>
+      <!--<a 
+       href="<%# @talkroom %>" 
+       class="btn btn-outline-secondary btn-block text-dark"
+       style="font-size: 1.2em;"
+       data-toggle="tooltip"
+       data-placement="right"
+       title="Sent Message"
+      >
+      <i class="far fa-paper-plane">
+      </a>-->
+        <i class="far fa-paper-plane"></i>
+      <% end %>
+  <% else %>
+    <%= form_with(model: current_user.talkrooms.build, local: true) do |f| %>
+      <%= hidden_field_tag :roommate_id, user.id %>
+      <%= f.button :type => "submit",
+          class: "btn btn-outline-secondary btn-block text-dark",
+          style: 'text-decoration: none; font-size: 1.2em;' do %>
+        <i class="far fa-paper-plane"></i>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
+

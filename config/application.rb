@@ -19,6 +19,7 @@ Bundler.require(*Rails.groups)
 
 module Lyrics
   class Application < Rails::Application
+    config.i18n.default_locale = :ja
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
     
     # Initialize configuration defaults for originally generated Rails version.
@@ -31,5 +32,7 @@ module Lyrics
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    
+    config.i18n.default_locale = :ja
   end
 end

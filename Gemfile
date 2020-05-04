@@ -72,3 +72,7 @@ gem 'dotenv-rails'
 
 gem 'carrierwave', '~> 1.3.1'
 gem 'cloudinary' , '1.11.1'
+
+#gem 'rails-i18n', '~> 5.1' 
+
+gem 'i18n_generators'

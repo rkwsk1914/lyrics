@@ -1,0 +1,14 @@
+<div>
+<%# if @messages.any? %>
+    <ul class="list-unstyled">
+    <% @messages.each do |message| %>
+        <% user = User.find(message.talkroom.user_id) %>
+        <li>
+            <%= user.name %>
+            <%= message.content %>
+            <%= l message.created_at, format: :short %>
+        </li>
+    <% end %>
+    </ul>
+<%# end %>
+</div>

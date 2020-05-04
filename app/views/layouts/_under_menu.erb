@@ -1,23 +1,9 @@
 <div class="col-10 d-flex justify-content-around mx-auto">
     <!-- Button trigger modal -->
-    <a data-toggle="modal" data-target="#staticBackdrop" style="cursor: pointer;">
-        <% if user.picture? %>
-            <img
-             src="<%= user.picture.to_s %>" 
-             class="border rounded-circle my-3 mx-2" 
-             style="width: 2.8rem; height: 2.8rem;"
-            >
-        <% else %>
-            <img 
-             src="/user_icon.png" 
-             class="border rounded-circle" 
-             style="width: 4rem; height: 4rem;"
-            >
-        <% end %>
+    <a data-toggle="modal" data-target="#current_user" style="cursor: pointer;">
+        <%= render 'users/user_image_button', rem: "2.8rem", user: user %>
     </a>
-    <a href="#" class="btn btn-block btn-link rounded-circle border my-3 mx-2" style="width: 2.5rem; height: 2.5rem;">
-        <i class="far fa-envelope"></i>
-    </a>
+    <%= render 'messages/talkroom_button', user: user %>
 <!--
     <a href="#" class="btn btn-block btn-link rounded-circle border my-3 mx-2" style="width: 2.5rem; height: 2.5rem;">
         <i class="far fa-handshake"></i>

@@ -1,0 +1,13 @@
+    <% if user.picture? %>
+        <img 
+         src="<%= user.picture.to_s %>" 
+         class="border rounded-circle" 
+         style="width: <%= rem %>; height: <%= rem %>;"
+        >
+    <% else %>
+        <img 
+         src="/user_icon.png" 
+         class="border rounded-circle" 
+         style="width: <%= rem %>; height: <%= rem %>;"
+        >
+    <% end %>

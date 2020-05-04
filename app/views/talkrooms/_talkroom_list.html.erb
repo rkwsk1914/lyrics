@@ -1,0 +1,16 @@
+<% if @talkrooms.any? %>
+    <nav class="nav flex-column nav-tabs border-0">
+    <% @talkrooms.each do |talkroom| %>
+        <% roommate = User.find(talkroom.roommate_id) %>
+        <% user = User.find(talkroom.user_id) %>
+        <li>
+        <a 
+         href="<%= talkroom_path(talkroom) %>" 
+         class="nav-link <%= 'active' if current_page?(talkroom_path(talkroom)) %>"
+         style="font-size: 0.9em;"
+        >
+            <%= roommate.name %>
+        </a>
+    <% end %>
+    </nav>
+<% end %>

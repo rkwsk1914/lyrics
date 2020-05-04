@@ -10,9 +10,12 @@ class User < ApplicationRecord
   mount_uploader :picture, PictureUploader
   
   has_many :lyrics
+  has_many :messages
   
-  has_many :sentmessages
-  has_many :receivemessages
+  has_many :talkrooms
+  has_many :outgoing, through: :talkrooms, source: :roommate
+  has_many :reverses_of_talkroom, class_name: 'Talkroom', foreign_key: 'roommate_id'
+  has_many :incoming, through: :reverses_of_talkroom, source: :user
   
   has_many :favorites
   has_many :likes, through: :favorites, source: :lyric
@@ -23,6 +26,21 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :follow
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverses_of_relationship, source: :user
+  
+  def talk(roommate_user)
+    unless self == roommate_user
+      self.talkrooms.find_or_create_by(roommate_id: roommate_user.id)
+    end
+  end
+
+  def untalk(roommate_user) 
+    talkroom = self.talkrooms.find_by(roommate_id: roommate_user.id)
+    talkroom.destroy if talkroom
+  end
+
+  def talking?(roommate_user)
+    self.outgoing.include?(roommate_user)
+  end
   
   def follow(other_user)
     unless self == other_user
@@ -52,7 +70,4 @@ class User < ApplicationRecord
     self.likes.include?(lyric)
   end
   
-  def sent
-    
-  end
 end

@@ -63,7 +63,7 @@
                             <%= link_to 'Edit', edit_user_path(user), class: "btn btn-light" %>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <% else %>
-                            <%= render 'favorites/message_button' %>
+                            <%= render 'messages/message_button', user: @user%>
                             <%= render 'relationships/follow_button', user: @user%>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <% end %>

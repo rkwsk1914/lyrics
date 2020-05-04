@@ -14,18 +14,18 @@
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     </head>
-    <% if logged_in?%>
+    <% if logged_in? %>
         <%= render 'users/current_user_card', user: @current_user %>
     <% end %>
     <body class="m-0" style="width: 90vw">
         <div class="container mw-100 m-0 p-0">
             <%= render 'layouts/flash_messages' %>
-            <% if logged_in?%>
+            <% if logged_in? %>
                 <%= render 'layouts/navbar'%>
             <% end %>
             <div class="row">
                 <div class="col-10 col-sm-12 mx-auto p-0">
-                    <% if logged_in?%>
+                    <% if logged_in? %>
                         <div class="position-fixed col-2 d-none d-sm-block mt-2">
                             <%= render 'layouts/side_menu', user: @current_user %>
                         </div>

@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, except: [:new, :create]
-  before_action :correct_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update, :talkings]
   
   #def index
   #  @users = User.order(id: :desc).page(params[:page]).per(25)
   #end
   
   def show
-    @user = User.find(params[:id])
+    user_find()
     @lyrics = @user.lyrics.order(id: :desc) #.page(params[:page]).per(25)
     @current_user = current_user
     counts(@user)
@@ -23,7 +23,6 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:success] = 'ようこそ' + @user.name + '! / Welcome ' + @user.name + ' !!'
-      session[:user_id] = @user.id
       redirect_to login_path
     else
       flash.now[:danger] = 'ユーザー登録に失敗しました。/ Fail Sign Up !'
@@ -32,12 +31,12 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    user_find()
     c_counts()
   end
   
   def update
-    @user = User.find(params[:id])
+    user_find()
     
     if @user.update(user_params)
       flash[:success] = 'アカウント情報を更新しました。/ Updated account information.'
@@ -52,27 +51,35 @@ class UsersController < ApplicationController
 #  end
 
   def followings
-    @user = User.find(params[:id])
+    user_find()
     @followings = @user.followings.page(params[:page]).per(25)
     counts(@user)
     c_counts()
   end
   
   def followers
-    @user = User.find(params[:id])
+    user_find()
     @followers = @user.followers.page(params[:page]).per(25)
     counts(@user)
     c_counts()
   end
   
   def likes
-    @user = User.find(params[:id])
+    user_find()
     @lyrics = Lyric.joins(:favorites).where(favorites: {user_id: @user.id})
     counts(@user)
     c_counts()
   end
+  
+  def talkings
+    @talkrooms = Talkroom.where(user_id: current_user.id)
+  end
 
   private
+  
+  def user_find
+    @user = User.find(params[:id])
+  end
   
   def user_params
     params.require(:user).permit(:name, :email, :profile, :password, :password_confirmation, :picture)
@@ -84,4 +91,5 @@ class UsersController < ApplicationController
       redirect_to user_path(params[:id])
     end
   end
+  
 end
