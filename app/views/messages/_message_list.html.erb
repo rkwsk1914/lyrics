@@ -6,6 +6,7 @@
         <li>
             <%= user.name %>
             <%= message.content %>
+            <%= message.read %>
             <%= l message.created_at, format: :short %>
         </li>
     <% end %>

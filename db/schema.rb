@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_010246) do
+ActiveRecord::Schema.define(version: 2020_05_04_064920) do
 
   create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_010246) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "talkroom_id"
+    t.boolean "read"
     t.index ["talkroom_id"], name: "index_messages_on_talkroom_id"
   end
 

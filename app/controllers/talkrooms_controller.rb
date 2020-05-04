@@ -41,4 +41,13 @@ class TalkroomsController < ApplicationController
   def create_room_list
     @talkrooms = Talkroom.where(user_id: current_user.id)
   end
+  
+  def message_read
+    @messages.each do |message|
+      if message.read == false
+        message.read = ture
+      end
+    end
+    @message.save
+  end
 end

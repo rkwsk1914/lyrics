@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :require_user_logged_in, except: [:new, :create]
   before_action :correct_user, only: [:edit, :update, :talkings]
+  before_action :c_counts, only: [:show, :edit, :followers, :followings, :likes, :talkings]
   
   #def index
   #  @users = User.order(id: :desc).page(params[:page]).per(25)
@@ -11,7 +12,6 @@ class UsersController < ApplicationController
     @lyrics = @user.lyrics.order(id: :desc) #.page(params[:page]).per(25)
     @current_user = current_user
     counts(@user)
-    c_counts()
   end
   
   def new
@@ -32,7 +32,6 @@ class UsersController < ApplicationController
   
   def edit
     user_find()
-    c_counts()
   end
   
   def update
@@ -54,21 +53,18 @@ class UsersController < ApplicationController
     user_find()
     @followings = @user.followings.page(params[:page]).per(25)
     counts(@user)
-    c_counts()
   end
   
   def followers
     user_find()
     @followers = @user.followers.page(params[:page]).per(25)
     counts(@user)
-    c_counts()
   end
   
   def likes
     user_find()
     @lyrics = Lyric.joins(:favorites).where(favorites: {user_id: @user.id})
     counts(@user)
-    c_counts()
   end
   
   def talkings

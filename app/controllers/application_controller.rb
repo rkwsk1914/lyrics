@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include TalkroomsHelper
   
   private
 
@@ -21,5 +22,8 @@ class ApplicationController < ActionController::Base
     @c_count_followings = current_user.followings.count
     @c_count_followers = current_user.followers.count
     @c_count_likes = current_user.favorites.count
+    @receiveroom = Talkroom.where(roommate_id: current_user.id)
+    @count_unread = counts_unread(@receiveroom)
   end
+
 end
