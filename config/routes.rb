@@ -13,14 +13,9 @@ Rails.application.routes.draw do
       get :followers
       get :likes
       get :talkings
+      get :origin
     end
   end
-  
-  #resources :lyrics, only: [:index, :show, :new, :create] do
-  #  member do
-  #    get :likers
-  #  end
-  #end
   
   resources :favorites, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]

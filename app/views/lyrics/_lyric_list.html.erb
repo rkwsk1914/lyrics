@@ -36,10 +36,12 @@
                                     </div>
                                     <div class="col-3">
                                         <% @comment_count = comment_counts(lyric) %>
-                                        <button type="button" class="btn btn-link btn-block text-dark" style="font-size: 1.2em;">
+                                        <%= link_to lyric, 
+                                          class: "btn btn-link btn-block text-dark", 
+                                          style: "font-size: 1.2em; text-decoration: none;" do %>
                                           <i class="far fa-comment"></i>
                                           <span class="badge"><%= @comment_count %></span>
-                                        </button>
+                                        <% end %>
                                     </div>
                                     <div class="col-3">
                                         <% render 'favorites/apply_link' %>

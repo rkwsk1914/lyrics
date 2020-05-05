@@ -1,0 +1,20 @@
+<ul class="nav nav-tabs" id="tab-var">
+    <li class="nav-item col-3 p-0">
+        <a 
+         href="<%= origin_user_path(user) %>" 
+         class="nav-link <%= 'active' if current_page?(origin_user_path(user)) %>"
+         style="font-size: 0.9em;"
+        >
+            My List
+        </a>
+    </li>
+    <li class="nav-item col-3 p-0">
+        <a
+         href="<%= lyrics_path %>"
+         class="nav-link <%= 'active' if current_page?(lyrics_path) %>"
+         style="font-size: 0.9em;"
+        >
+            最新リスト
+        </a>
+    </li>
+</ul>

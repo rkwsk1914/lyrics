@@ -49,6 +49,14 @@ class UsersController < ApplicationController
 #  def destroy
 #  end
 
+  def origin
+    @user = User.find_by(id: session[:user_id])
+    ids = @user.followings.ids
+    ids.push(@user.id)
+    @lyrics = Lyric.all.where(user_id: ids).order(id: :desc).page(params[:page]).per(25)
+    c_counts()  
+  end
+
   def followings
     user_find()
     @followings = @user.followings.page(params[:page]).per(25)
