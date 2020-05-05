@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: email)
     if login(email, password)
       flash[:success] = 'ログインに成功しました。/ Welcome back' + user.name + ' !!'
-      redirect_to lyrics_path
+      redirect_to origin_user_path(user)
     else
       flash.now[:danger] = 'EmailまたはPasswordが不正です。/ Incorrect Email or Password!!'
       render :new

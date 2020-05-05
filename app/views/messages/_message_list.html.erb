@@ -28,8 +28,10 @@ $(window).on('load', () => {
                 </li>
             <% else %>
                 <li class="col-9 d-flex justify-content-end my-4">
-                    <%= render 'users/user_image_button',rem: "2.5rem", user: user %>
-                    <span><%= user.name %></span>
+                    <a class="d-flex justify-content-center" data-toggle="modal" data-target="#other_user" style="cursor: pointer;">
+                        <%= render 'users/user_image_button',rem: "2.5rem", user: user %>
+                        <span><%= user.name %></span>
+                    </a>
                     <div class="border p-1 col-7", style="border-radius: 10px;">
                         <%= message.content %>    
                     </div>

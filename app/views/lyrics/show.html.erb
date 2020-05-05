@@ -22,9 +22,11 @@
             <div class="">
                 <%= render 'favorites/favorite_button', lyric: @lyric %>
                 <% if @user == current_user %>
-                    <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block my-3" %>
+                    <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block" %>
                     <%= render 'lyrics/delete_button', lyric: @lyric %>
                 <% else %>
+                    <%= render 'messages/message_button', user: @user%>
+                    <%= render 'relationships/follow_button', user: @user%>
                     <%# render 'favorites/apply_button' %>
                     <%= render 'comments/comment_button' %>
                 <% end %>
@@ -49,13 +51,13 @@
                 <h4 class="text-center p-2"><%= @lyric.title %></h4>
                 <p class="text-right px-2">Lyric by <%= @user.name %></p>
                 <p class="text-right px-2"><%= l @lyric.created_at, format: :long %></p>
-                <section class="my-3 mh-75 p-2">
+                <section class="my-3 mh-75 p-2" style="white-space: pre-line;">
                     <%= @lyric.content %>
                 </section>
             </div>
             <div class="my-3">
                 <h6>作者からのコメント</h6>
-                <section class="border my-3 p-2">
+                <section class="border my-3 p-2" style="white-space: pre-line;">
                     <%= @lyric.comment %>
                 </section>
             </div>
