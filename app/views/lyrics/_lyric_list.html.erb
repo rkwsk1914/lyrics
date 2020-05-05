@@ -27,15 +27,22 @@
                                 </section>
                             <% end %>
                             <div class="row col-12 d-flex justify-content-end p-0">
-                                <div class="d-flex justify-content-around col-7">
-                                    <div class="col-4">
+                                <div class="d-flex justify-content-around col-11">
+                                    <div class="col-3">
+                                        <p class="text-right px-2"><%= l lyric.created_at, format: :long %></p>
+                                    </div>
+                                    <div class="col-3">
                                         <%= render 'favorites/favorite_link', lyric: lyric %>
                                     </div>
-                                    <div class="col-4">
-                                        <% render 'favorites/apply_link' %>
+                                    <div class="col-3">
+                                        <% @comment_count = comment_counts(lyric) %>
+                                        <button type="button" class="btn btn-link btn-block text-dark" style="font-size: 1.2em;">
+                                          <i class="far fa-comment"></i>
+                                          <span class="badge"><%= @comment_count %></span>
+                                        </button>
                                     </div>
-                                    <div class="col-4">
-                                        <% render 'favorites/comment_link' %>
+                                    <div class="col-3">
+                                        <% render 'favorites/apply_link' %>
                                     </div>
                                 </div>
                                 <div class="mx-2 my-1">

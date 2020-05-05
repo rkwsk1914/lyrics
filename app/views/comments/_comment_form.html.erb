@@ -1,0 +1,29 @@
+<div class="modal fade" id="commnetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New commnet</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= form_with(model: comment, local: true) do |form| %>
+        <div class="modal-body">
+          <% render 'layouts/error_message', model: comment %>
+          <div class="form-group">
+              <%= form.text_area :content, 
+               class: 'form-control',
+               placeholder: "このLyricにコメントを!(最大50文字)",
+               size: "10x5", 
+               style: "border-radius: 10px;" %>
+          </div>
+          <%= hidden_field_tag :lyric_id, lyric.id %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      <%= form.submit 'comment', class: 'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

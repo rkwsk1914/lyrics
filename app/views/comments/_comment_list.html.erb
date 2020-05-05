@@ -1,0 +1,17 @@
+<div class="col-11 mx-auto">
+<h2 class="text-center">Comments</h2>
+<% if comments.any? %>
+  <ul class="list-unstyled">
+    <% comments.each do |comment| %>
+      <% user = User.find(comment.user_id)%>
+      <li class="border p-2 my-2" >
+        <%= comment.content %><br>
+        <div class="d-flex justify-content-end">
+        <%= render 'users/user_image_button',rem: "2rem", user: user %>
+        <%= user.name  %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+</div>

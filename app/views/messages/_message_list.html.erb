@@ -1,10 +1,10 @@
 <div id="contentBox" class="border px-0 col-12", 
 style="height: 70vh; overflow: scroll;" >
 <script>
-const MoveScrollBottom = () => {
-  $('#contentBox').scrollTop(($("#contentBox")[0].scrollHeight));
-};
-$(window).on('load', MoveScrollBottom());
+$(window).on('load', () => {
+  $('#contentBox').scrollTop(($("#contentBox")[0].scrollHeight));  
+  console.log('OK');
+});
 </script>
     <% if @messages.any? %>
         <ul class="list-unstyled">
@@ -14,22 +14,27 @@ $(window).on('load', MoveScrollBottom());
                 <li class="col-9 offset-3 d-flex justify-content-end my-4">
                     <div class="mt-auto">
                         <%= l message.created_at, format: :short %>
-                        <% message.read %>
+                        <% if message.read == true %>
+                            <span>既読</span>
+                        <% else %>
+                            <span>未読</span>
+                        <% end %>
                     </div>
                     <div class="border p-1 col-7", style="border-radius: 10px;">
                         <%= message.content %>    
                     </div>
-                    <%= user.name %>
+                    <%= render 'users/user_image_button',rem: "2.5rem", user: user %>
+                    <span><%= user.name %></span>
                 </li>
             <% else %>
                 <li class="col-9 d-flex justify-content-end my-4">
-                    <%= user.name %>
+                    <%= render 'users/user_image_button',rem: "2.5rem", user: user %>
+                    <span><%= user.name %></span>
                     <div class="border p-1 col-7", style="border-radius: 10px;">
                         <%= message.content %>    
                     </div>
                     <div class="mt-auto">
                         <%= l message.created_at, format: :short %>
-                        <% message.read %>
                     </div>
                 </li>
             <% end %>

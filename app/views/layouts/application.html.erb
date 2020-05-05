@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="width: 100vw">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,7 +17,7 @@
     <% if logged_in? %>
         <%= render 'users/current_user_card', user: @current_user %>
     <% end %>
-    <body class="m-0" style="width: 90vw">
+    <body class="m-0">
         <div class="container mw-100 m-0 p-0">
             <%= render 'layouts/flash_messages' %>
             <% if logged_in? %>

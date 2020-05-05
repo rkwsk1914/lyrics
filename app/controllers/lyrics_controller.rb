@@ -11,6 +11,8 @@ class LyricsController < ApplicationController
   def show
     @lyric = Lyric.find(params[:id])
     @user = User.find(@lyric.user_id)
+    @comment = Comment.new
+    @comments = @lyric.comments
     c_counts()
   end
   

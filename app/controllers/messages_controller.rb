@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     if @message.save
       flash[:success] = 'メッセージを投稿しました。'
     else
-      @message = @sentroom.messages.order(id: :desc).page(params[:page])
+      @message = @sentroom.messages.all.page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
     end
     redirect_back(fallback_location: root_path)

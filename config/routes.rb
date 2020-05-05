@@ -28,5 +28,6 @@ Rails.application.routes.draw do
   resources :lyrics
   resources :talkrooms, only: [:show, :create]
   resources :messages, only: [:create]
+  resources :comments, only: [:create]
   
 end

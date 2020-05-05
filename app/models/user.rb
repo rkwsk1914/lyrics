@@ -11,6 +11,7 @@ class User < ApplicationRecord
   
   has_many :lyrics
   has_many :messages
+  has_many :comments
   
   has_many :talkrooms
   has_many :outgoing, through: :talkrooms, source: :roommate
