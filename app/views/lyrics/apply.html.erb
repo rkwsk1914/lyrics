@@ -1,0 +1,11 @@
+<div class="offset-sm-2 col-sm-10">
+    <h1>Apply</h1>
+    <div class="row d-flex justify-content-around">
+        <div class="col-12 col-sm-6">
+            <%= render 'lyrics/lyric_detail', lyric: @lyric, user: @user %>
+        </div>
+        <div class="col-sm-6">
+            <%= render 'requests/apply_list', applys: @applys %>
+        </div>
+    </div>
+<div>

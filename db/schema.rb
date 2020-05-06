@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_013507) do
+ActiveRecord::Schema.define(version: 2020_05_06_030257) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "lyric_id"
@@ -43,11 +43,11 @@ ActiveRecord::Schema.define(version: 2020_05_05_013507) do
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "talkroom_id"
     t.boolean "read"
+    t.text "content"
     t.index ["talkroom_id"], name: "index_messages_on_talkroom_id"
   end
 
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 2020_05_05_013507) do
     t.index ["follow_id"], name: "index_relationships_on_follow_id"
     t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
     t.index ["user_id"], name: "index_relationships_on_user_id"
+  end
+
+  create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "lyric_id"
+    t.boolean "permission"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lyric_id"], name: "index_requests_on_lyric_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "talkrooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -89,6 +99,8 @@ ActiveRecord::Schema.define(version: 2020_05_05_013507) do
   add_foreign_key "messages", "talkrooms"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
+  add_foreign_key "requests", "lyrics"
+  add_foreign_key "requests", "users"
   add_foreign_key "talkrooms", "users"
   add_foreign_key "talkrooms", "users", column: "roommate_id"
 end

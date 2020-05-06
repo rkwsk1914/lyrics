@@ -6,9 +6,11 @@ class Lyric < ApplicationRecord
   validates :comment, presence: true, length: { maximum: 50 }
   
   has_many :comments
+  has_many :requests
   has_many :favorites
   has_many :likers, through: :favorites, source: :user
   has_many :reverses_of_favorite, class_name: 'Favorite', foreign_key: 'user_id'
   has_many :likes, through: :reverses_of_favorite, source: :lyric
   
+  has_many :requests
 end

@@ -13,6 +13,10 @@ class User < ApplicationRecord
   has_many :messages
   has_many :comments
   
+  has_many :requests
+  has_many :applyings, through: :requests, source: :lyric
+  
+
   has_many :talkrooms
   has_many :outgoing, through: :talkrooms, source: :roommate
   has_many :reverses_of_talkroom, class_name: 'Talkroom', foreign_key: 'roommate_id'
@@ -71,4 +75,7 @@ class User < ApplicationRecord
     self.likes.include?(lyric)
   end
   
+  def apply?(lyric)
+    self.applyings.include?(lyric)
+  end
 end

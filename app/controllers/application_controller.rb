@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include TalkroomsHelper
   include CommentsHelper
+  include RequestsHelper
   
   private
 

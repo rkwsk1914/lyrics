@@ -3,31 +3,23 @@
     <div class="row d-flex justify-content-around">
         <div class="col-2 offset-1 d-none d-sm-block">
             <%= link_to user_path(@user), style: "text-decoration: none; cursor: pointer;" do  %>
-                <% if @user.picture? %>
-                    <img
-                     src="<%= @user.picture.to_s %>" 
-                     class="border rounded-circle mx-auto" 
-                     style="display: block; width: 5rem; height: 5rem;"
-                    >
-                    <p class="text-center col-12"><%= @user.name %></p>
-                <% else %>
-                    <img 
-                     src="/user_icon.png" 
-                     class="border rounded-circle mx-auto" 
-                     style="display: block; width: 5rem; height: 5rem;"
-                    >
-                    <p class="text-center col-12"><%= @user.name %></p>
-                <% end %>
+                <%= render 'users/user_image_button',rem: "5rem", user: @user %>
+                <p class="text-center col-12"><%= @user.name %></p>
             <% end %>
             <div class="">
                 <%= render 'favorites/favorite_button', lyric: @lyric %>
                 <% if @user == current_user %>
                     <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block" %>
                     <%= render 'lyrics/delete_button', lyric: @lyric %>
+                    <% @apply_count = apply_counts(@lyric) %>
+                    <%= link_to apply_lyric_path(@lyric), class: "btn btn-secondary btn-block" do %>
+                        <i class="far fa-handshake"></i>
+                        <span class="badge"><%= @apply_count %></span>
+                    <% end %>
                 <% else %>
                     <%= render 'messages/message_button', user: @user%>
                     <%= render 'relationships/follow_button', user: @user%>
-                    <%# render 'favorites/apply_button' %>
+                    <%= render 'requests/apply_button', apply: @apply, lyric: @lyric %>
                     <%= render 'comments/comment_button' %>
                 <% end %>
             </div>
@@ -43,24 +35,11 @@
                 <%= render 'comments/comment_link', lyric: @lyric %>
             </div>
             <div class="">
-                <%# render 'favorites/apply_link' %>
+                <%= render 'requests/apply_link', apply: @apply, lyric: @lyric %>
             </div>
         </div>
         <div class="col-12 col-sm-6">
-            <div class="border">
-                <h4 class="text-center p-2"><%= @lyric.title %></h4>
-                <p class="text-right px-2">Lyric by <%= @user.name %></p>
-                <p class="text-right px-2"><%= l @lyric.created_at, format: :long %></p>
-                <section class="my-3 mh-75 p-2" style="white-space: pre-line;">
-                    <%= @lyric.content %>
-                </section>
-            </div>
-            <div class="my-3">
-                <h6>作者からのコメント</h6>
-                <section class="border my-3 p-2" style="white-space: pre-line;">
-                    <%= @lyric.comment %>
-                </section>
-            </div>
+            <%= render 'lyrics/lyric_detail', lyric: @lyric, user: @user %>
             <div class="mx-2 my-1 d-sm-none d-block">
                 <% if current_user == @lyric.user %>
                     <%= render 'lyrics/edit_button', lyric: @lyric %>

@@ -6,14 +6,23 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  delete 'requests/:id', to: 'requests#destroy'
+  
+  
 
-  resources :users, only: [:show, :new, :create] do #:index
+  resources :users, only: [:show, :new, :create] do
     member do
       get :followings
       get :followers
       get :likes
       get :talkings
       get :origin
+    end
+  end
+  
+  resources :lyrics, only: [:show] do
+      member do
+      get :apply
     end
   end
   
@@ -24,5 +33,5 @@ Rails.application.routes.draw do
   resources :talkrooms, only: [:show, :create]
   resources :messages, only: [:create]
   resources :comments, only: [:create]
-  
+  resources :requests, only: [:create, :edit, :update, :destroy]
 end

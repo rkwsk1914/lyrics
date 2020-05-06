@@ -1,0 +1,17 @@
+<h2 class="text-center">Applications</h2>
+<% if applys.any? %>
+  <ul class="list-unstyled  col-10">
+    <% applys.each do |apply| %>
+      <% user = apply.user %>
+      <li class="border p-2 my-2" >
+        <div class="d-flex justify-content-end">
+          <%= render 'requests/permission_button', apply: apply %>
+          <%= link_to users_path(user) do %>
+            <%= render 'users/user_image_button',rem: "2rem", user: user %>
+            <%= user.name %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

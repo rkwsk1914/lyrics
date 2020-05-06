@@ -1,0 +1,23 @@
+<div class="offset-2">
+    <h1>確認</h1>
+    <% unless @apply.permission == true %>
+        <p><%= @apply.user.name %>に使用許可を出しますか？</p>
+        <div class="d-flex justify-content-around">
+            <%= form_with(model: @apply, local: true) do |f| %>
+                <%= hidden_field_tag :user_id, @apply.user.id %>
+                <%= f.submit 'Yes', class: 'btn btn-secondary btn-block col-12' %>
+            <% end %>
+            <%= link_to 'No ',apply_lyric_path(@lyric), class: "btn btn-secondary btn-block col-1"%>
+        </div>
+    <% else %>
+        <p><%= @apply.user.name %>への使用許可を取り下げますか？</p>
+        <div class="d-flex justify-content-around">
+            <%= form_with(model: @apply, local: true) do |f| %>
+                <%= hidden_field_tag :user_id, @apply.user.id %>
+                <%= f.submit 'Yes', class: 'btn btn-secondary btn-block col-12' %>
+            <% end %>
+            <%= link_to 'No ',apply_lyric_path(@lyric), class: "btn btn-secondary btn-block col-1"%>
+        </div>
+    <% end %>
+    </div>
+</div>

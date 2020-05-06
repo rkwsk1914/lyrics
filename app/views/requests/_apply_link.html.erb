@@ -1,0 +1,27 @@
+  <% if current_user.apply?(lyric) %>
+    <% @apply_count = apply_counts(lyric) %>
+    <% msg = '使用許可申請を取り消しますか?' %>
+    <%# form_with(model: apply, local: true, method: :delete, data: { confirm: msg }) do |form| %>
+    <%= form_with(model: apply, local: true, method: :delete) do |form| %>
+      <%= hidden_field_tag :lyric_id, lyric.id %>
+      <%= form.button :type => "submit",
+          class: "btn btn-link btn-block",
+          disabled: 'disabled',
+          style: 'text-decoration: none; font-size: 1.2em;' do %>
+          DONE
+        <i class="far fa-handshake"></i>
+        <span class="badge"><%= @apply_count %></span>
+      <% end %>
+    <% end %>
+  <% else %>
+<% @apply_count = apply_counts(lyric) %>
+<%= form_with(model: apply, local: true) do |form| %>
+  <%= hidden_field_tag :lyric_id, lyric.id %>
+  <%= form.button :type => "submit",
+      class: "btn btn-link btn-block text-dark",
+      style: 'text-decoration: none; font-size: 1.2em;' do %>
+    <i class="far fa-handshake"></i>
+    <span class="badge"><%= @apply_count %></span>
+  <% end %>
+<% end %>
+  <% end %>

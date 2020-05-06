@@ -13,6 +13,7 @@ class LyricsController < ApplicationController
     @user = User.find(@lyric.user_id)
     @comment = Comment.new
     @comments = @lyric.comments
+    @apply = current_user.requests.new
     c_counts()
   end
   
@@ -51,12 +52,23 @@ class LyricsController < ApplicationController
   
   def destroy
     @user = User.find(@lyric.user_id)
-    if current_user.likes?(@lyric)
-      current_user.unlike(@lyric)
-    end
+    @lyric.favorites.destroy_all
+    @lyric.comments.destroy_all
+    @lyric.requests.destroy_all
+    
     @lyric.destroy
     flash[:success] = '『' + @lyric.title + '』を削除しました。/ Delete "' + @lyric.title + '".'
     redirect_to @user
+  end
+  
+  def apply
+    @lyric = Lyric.find(params[:id])
+    @user = User.find(@lyric.user_id)
+    unless @user == current_user
+      redirect_back(fallback_location: root_path)
+      return
+    end
+    @applys = @lyric.requests
   end
   
   private

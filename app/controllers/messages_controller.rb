@@ -5,11 +5,12 @@ class MessagesController < ApplicationController
     @message.read = false
     if @message.save
       flash[:success] = 'メッセージを投稿しました。'
+      redirect_back(fallback_location: root_path)
     else
       @message = @sentroom.messages.all.page(params[:page])
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      redirect_back(fallback_location: root_path)
     end
-    redirect_back(fallback_location: root_path)
   end
 
   def dstroy

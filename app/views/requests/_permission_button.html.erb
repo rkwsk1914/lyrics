@@ -1,0 +1,5 @@
+<% unless apply.permission == true %>
+  <%= link_to 'OK?', edit_request_path(apply), class: "btn btn-light" %>
+<% else %>
+  <%= link_to 'NO?', edit_request_path(apply), class: "btn btn-light" %>
+<% end %>

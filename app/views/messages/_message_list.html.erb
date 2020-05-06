@@ -23,8 +23,6 @@ $(window).on('load', () => {
                     <div class="border p-1 col-7", style="border-radius: 10px;">
                         <%= message.content %>    
                     </div>
-                    <%= render 'users/user_image_button',rem: "2.5rem", user: user %>
-                    <span><%= user.name %></span>
                 </li>
             <% else %>
                 <li class="col-9 d-flex justify-content-end my-4">
