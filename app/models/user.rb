@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_secure_password
   validates :profile, presence: true, length: { maximum: 50 }
   validates :password, presence: true, length: { minimum: 8 }, on: :create
+  
+  #has_one_attached :picture
   mount_uploader :picture, PictureUploader
   
   has_many :lyrics

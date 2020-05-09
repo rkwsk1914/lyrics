@@ -76,3 +76,8 @@ gem 'cloudinary' , '1.11.1'
 #gem 'rails-i18n', '~> 5.1' 
 
 gem 'i18n_generators'
+
+gem 'mini_magick'
+gem 'aws-sdk-s3', require: false
+
+gem 'activestorage', '~> 5.2.0' 
