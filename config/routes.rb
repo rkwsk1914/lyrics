@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :lyrics, only: [:show] do
+  resources :lyrics, only: [:show, :new, :create,] do
       member do
       get :apply
     end
@@ -33,5 +33,5 @@ Rails.application.routes.draw do
   resources :talkrooms, only: [:show, :create]
   resources :messages, only: [:create]
   resources :comments, only: [:create]
-  resources :requests, only: [:create, :edit, :update, :destroy]
+  resources :requests#, only: [:create, :edit, :update, :destroy]
 end

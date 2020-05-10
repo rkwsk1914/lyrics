@@ -1,12 +1,11 @@
   <% if current_user.apply?(lyric) %>
     <% @apply_count = apply_counts(lyric) %>
     <% msg = '使用許可申請を取り消しますか?' %>
-    <%# form_with(model: apply, local: true, method: :delete, data: { confirm: msg }) do |form| %>
-    <%= form_with(model: apply, local: true, method: :delete) do |form| %>
+    <%= form_with(model: apply, local: true, method: :delete, data: { confirm: msg }) do |form| %>
       <%= hidden_field_tag :lyric_id, lyric.id %>
       <%= form.button :type => "submit",
           class: "btn btn-outline-danger btn-block",
-          disabled: 'disabled',
+          #disabled: 'disabled',
           style: 'text-decoration: none; font-size: 1.2em;' do %>
           DONE
         <i class="far fa-handshake"></i>

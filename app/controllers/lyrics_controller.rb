@@ -13,7 +13,11 @@ class LyricsController < ApplicationController
     @user = User.find(@lyric.user_id)
     @comment = Comment.new
     @comments = @lyric.comments
-    @apply = current_user.requests.new
+    unless current_user.apply?(@lyric)
+      @apply = current_user.requests.new
+    else
+      @apply = current_user.requests.find_by(lyric_id: @lyric.id)
+    end
     c_counts()
   end
   

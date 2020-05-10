@@ -45,13 +45,16 @@ class RequestsController < ApplicationController
   end
 
   def destroy
-    @apply = current_user.requests.find_by(lyric_id: params[:lyrics_id])
+    @apply = current_user.requests.find_by(params[:id])
+    @user = @apply.user
+    @lyric = @apply.lyric
+    
     if @apply
       @apply.destroy
       flash[:secondary] = '『' + @lyric.title + '』を削除しました。/ Delete "' + @lyric.title + '".'
       redirect_back(fallback_location: root_path)
     else
-      redirect_back(fallback_location: root_path)
+      render template: 'lyrics/show'
     end
   end
 
