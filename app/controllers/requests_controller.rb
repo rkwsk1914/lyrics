@@ -1,15 +1,37 @@
 class RequestsController < ApplicationController
-  def create
+  
+  def index
+    @applys = Request.joins(:lyric).where(lyrics: {user_id: current_user.id})
+    c_counts()
+  end
+  
+  def show
+    @apply = Request.find(params[:id])
+    c_counts()
+  end
+  
+  def new
     @apply = current_user.requests.new
+    @lyric = Lyric.find(params[:lyric_id])
+    c_counts()
+  end
+  
+  def create
+    @apply = current_user.requests.new(apply_params)
     @apply.lyric_id = params[:lyric_id]
     @apply.permission = false
+    
     @lyric = Lyric.find(params[:lyric_id])
+    @user = @lyric.user
+    @comment = Comment.new
+    @comments = @lyric.comments
     
     if @apply.save
       flash[:success] = '『' + @lyric.title + '』の作曲応募しました。/  Applied for composition to "' + @lyric.title + '" !!'
-      redirect_back(fallback_location: root_path)
+      redirect_to @lyric
     else
       flash.now[:danger] = 'エラー発生！応募に失敗しました。 / Fail Applied for composition!'
+      #render :new
       render template: 'lyrics/show'
     end
   end
@@ -17,6 +39,7 @@ class RequestsController < ApplicationController
   def edit
     @apply = Request.find(params[:id])
     @lyric = @apply.lyric
+    c_counts()
   end
   
   def update
@@ -51,14 +74,14 @@ class RequestsController < ApplicationController
     
     if @apply
       @apply.destroy
-      flash[:secondary] = '『' + @lyric.title + '』を削除しました。/ Delete "' + @lyric.title + '".'
+      flash[:secondary] = '『' + @lyric.title + '』への使用依頼を削除しました。/ Delete request for"' + @lyric.title + '".'
       redirect_back(fallback_location: root_path)
     else
       render template: 'lyrics/show'
     end
   end
 
-  def comment_params
-    params.require(:request).permit(:lyric_id)
+  def apply_params
+    params.require(:request).permit(:comments)
   end
 end

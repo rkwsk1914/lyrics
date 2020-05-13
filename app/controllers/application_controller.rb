@@ -26,5 +26,6 @@ class ApplicationController < ActionController::Base
     @c_count_likes = current_user.favorites.count
     @receiveroom = Talkroom.where(roommate_id: current_user.id)
     @count_unread = counts_unread(@receiveroom)
+    @count_apply = Request.joins(:lyric).where(lyrics: {user_id: current_user.id}, permission: false ).count
   end
 end

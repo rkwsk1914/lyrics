@@ -1,0 +1,12 @@
+<div class="offset-2">
+    <ul>
+        <% @applys.each do |apply| %>
+        <li>
+            <%= link_to apply do %>
+                <span><%= apply.lyric.title %></span>
+                <span><%= apply.user.name %></span>
+            <% end %>
+        </li>        
+        <% end %>
+    </ul>
+</div>

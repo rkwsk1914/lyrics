@@ -5,8 +5,8 @@
       <% user = apply.user %>
       <li class="border p-2 my-2" >
         <div class="d-flex justify-content-end">
-          <%= render 'requests/permission_button', apply: apply %>
-          <%= link_to users_path(user) do %>
+          <%= link_to apply do %>
+          <!--<audio src="<%#= apply.musicdata.to_s %>" preload="none" controls = "auto"></audio>-->
             <%= render 'users/user_image_button',rem: "2rem", user: user %>
             <%= user.name %>
           <% end %>

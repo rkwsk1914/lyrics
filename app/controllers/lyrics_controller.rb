@@ -1,11 +1,11 @@
 class LyricsController < ApplicationController
   before_action :require_user_logged_in
   before_action :correct_user, only: [:edit, :update, :destroy]
-
+  before_action :c_counts, only: [:index, :show, :edit, :new, :apply]
+  
   def index
     @lyrics = Lyric.order(id: :desc).page(params[:page]).per(25)
     @user = User.find_by(id: session[:user_id])
-    c_counts()
   end
   
   def show
@@ -18,7 +18,6 @@ class LyricsController < ApplicationController
     else
       @apply = current_user.requests.find_by(lyric_id: @lyric.id)
     end
-    c_counts()
   end
   
   def new

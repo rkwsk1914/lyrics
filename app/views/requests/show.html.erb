@@ -1,0 +1,7 @@
+<div class="offset-2">
+    <h2>『<%= @apply.lyric.title %>』 への使用依頼</h2>
+    <%= render 'requests/permission_button', apply: @apply %>
+    <%= @apply.user.name %>
+    <%= @apply.comments %>
+    <%= link_to 'Back', requests_path %>
+</div>

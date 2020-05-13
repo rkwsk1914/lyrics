@@ -82,3 +82,7 @@ gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
 
 gem 'activestorage', '~> 5.2.0' 
+
+gem 'carrierwave-audio'
+
+gem 'ruby-sox'
