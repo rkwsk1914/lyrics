@@ -11,15 +11,15 @@
                 <% if @user == current_user %>
                     <%= link_to 'Edit', edit_lyric_path(@lyric), class: "btn btn-secondary btn-block" %>
                     <%= render 'lyrics/delete_button', lyric: @lyric %>
-                    <% @apply_count = apply_counts(@lyric) %>
-                    <%= link_to apply_lyric_path(@lyric), class: "btn btn-secondary btn-block" do %>
+                    <!--<%# @apply_count = apply_counts(@lyric) %>
+                    <%#= link_to apply_lyric_path(@lyric), class: "btn btn-secondary btn-block" do %>
                         <i class="far fa-handshake"></i>
-                        <span class="badge"><%= @apply_count %></span>
-                    <% end %>
+                        <span class="badge"><%#= @apply_count %></span>
+                    <%# end %>-->
                 <% else %>
                     <%= render 'messages/message_button', user: @user%>
                     <%= render 'relationships/follow_button', user: @user%>
-                    <%= render 'requests/apply_button', apply: @apply, lyric: @lyric %>
+                    <%#= render 'requests/apply_button', apply: @apply, lyric: @lyric %>
                     <%= render 'comments/comment_button' %>
                 <% end %>
             </div>

@@ -43,15 +43,15 @@
                                           <span class="badge"><%= @comment_count %></span>
                                         <% end %>
                                     </div>
-                                    <div class="col-3">
-                                        <% @apply_count = apply_counts(lyric) %>
-                                        <%= link_to lyric, 
+                                    <!--<div class="col-3">
+                                        <%# @apply_count = apply_counts(lyric) %>
+                                        <%#= link_to lyric, 
                                           class: "btn btn-link btn-block text-dark", 
                                           style: "font-size: 1.2em; text-decoration: none;" do %>
                                           <i class="far fa-handshake"></i>
-                                          <span class="badge"><%= @apply_count %></span>
-                                        <% end %>
-                                    </div>
+                                          <span class="badge"><%#= @apply_count %></span>
+                                        <%# end %>
+                                    </div>-->
                                 </div>
                                 <div class="mx-2 my-1">
                                     <% if current_user == lyric.user && op == 'user-page' %>
