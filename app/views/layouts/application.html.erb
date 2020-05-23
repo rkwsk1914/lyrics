@@ -23,9 +23,7 @@
             <%= render 'layouts/navbar'%>
         <% end %>
         <%= render 'layouts/side_menu', user: @current_user %>
-        <div>
-            <%= yield %>
-        </div>
+        <%= yield %>
         <%= render 'layouts/under_menu', user: @current_user %>
     </body>
 </html>

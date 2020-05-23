@@ -1,17 +1,17 @@
 <ul class="nav nav-tabs" id="tab-var">
-    <li class="nav-item col-3 p-0">
+    <li class="nav-item col-5 offset-1 p-0 text-center">
         <a 
          href="<%= origin_user_path(user) %>" 
-         class="nav-link <%= 'active' if current_page?(origin_user_path(user)) %>"
+         class="nav-link <%= 'activate' if current_page?(origin_user_path(user)) %>"
          style="font-size: 0.9em;"
         >
             My List
         </a>
     </li>
-    <li class="nav-item col-3 p-0">
+    <li class="nav-item col-5 p-0 text-center">
         <a
          href="<%= lyrics_path %>"
-         class="nav-link <%= 'active' if current_page?(lyrics_path) %>"
+         class="nav-link <%= 'activate' if current_page?(lyrics_path) %>"
          style="font-size: 0.9em;"
         >
             最新リスト

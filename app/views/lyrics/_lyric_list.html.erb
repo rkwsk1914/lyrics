@@ -1,66 +1,51 @@
-    <div class="col-12 p-0">
+    <div class="col-12 p-0 container">
         <% if @lyrics.any? %>
-            <ul class="list-unstyled">
+            <ul class="list-unstyled pt-2" id="lyrics">
                 <% @lyrics.each do |lyric| %>
                     <% user = User.find(lyric.user_id)%>
-                    <li class="media p-1 p-sm-3 border-bottom" >
-                        
-                        <div class="row col-12 d-flex justify-content-start">
-                            <%= link_to user, class: "ml-3 media-body col-1 p-0", style: "text-decoration: none;" do %>
+                    <li class="media p-sm-3 col-11 mx-auto my-3" >
+                        <div class="lyric row d-flex justify-content-around">
+                            <%= link_to user, class: "ml-3 mt-3 media-body col-2 p-0" do %>
                                 <%= render 'users/user_image_button',rem: "3rem", user: user %>
+                                <span class="text-dark" id="ly-date"><%= l lyric.created_at, format: :smlong %></span>
                             <% end %>
-                            
-                            <%= link_to lyric, class: "media-body text-dark col-11", style: "text-decoration: none;" do %>
-                                <div class="d-flex justify-content-start">
-                                    <h6 class="col-9"><%= lyric.title %></h6>
-                                    <small>by <%= user.name %></small>
-                                </div>
-                                <section class="pl-3" style="font-size: 0.9em;">
+                            <%= link_to lyric, class: "media-body text-dark col-10 p-0 mt-3 ", style: "text-decoration: none;" do %>
+                                <h5><%= lyric.title %> <small>by <%= user.name %></small></h5>
+                                <section>
                                     <% if lyric.content.length < 75 %>
                                         <%= lyric.content %>
                                     <% else %>
                                         <%= lyric.content.slice(0,75) %> ...
                                     <% end %>
                                 </section>
-                                <section class="pl-3 p-2 border my-2" style="font-size: 0.9em;">
-                                    <%= lyric.comment %>
-                                </section>
                             <% end %>
-                            <div class="row col-12 d-flex justify-content-end p-0">
-                                <div class="d-flex justify-content-around col-11">
-                                    <div class="col-3">
-                                        <p class="text-right px-2"><%= l lyric.created_at, format: :long %></p>
-                                    </div>
-                                    <div class="col-3">
-                                        <%= render 'favorites/favorite_link', lyric: lyric %>
-                                    </div>
-                                    <div class="col-3">
-                                        <% @comment_count = comment_counts(lyric) %>
-                                        <%= link_to lyric, 
-                                          class: "btn btn-link btn-block text-dark", 
-                                          style: "font-size: 1.2em; text-decoration: none;" do %>
+                            <div class="col-12 row d-flex justify-content-end">
+                                <div class="col-3">
+                                    <%= render 'favorites/favorite_link', lyric: lyric %>
+                                </div>
+                                <div class="col-3">
+                                    <% @comment_count = comment_counts(lyric) %>
+                                    <%= link_to lyric, class: "btn btn-link btn-block text-dark", style: "font-size: 1.2em; text-decoration: none;" do %>
                                           <i class="far fa-comment"></i>
                                           <span class="badge"><%= @comment_count %></span>
-                                        <% end %>
-                                    </div>
-                                    <!--<div class="col-3">
-                                        <%# @apply_count = apply_counts(lyric) %>
-                                        <%#= link_to lyric, 
-                                          class: "btn btn-link btn-block text-dark", 
-                                          style: "font-size: 1.2em; text-decoration: none;" do %>
-                                          <i class="far fa-handshake"></i>
-                                          <span class="badge"><%#= @apply_count %></span>
-                                        <%# end %>
-                                    </div>-->
-                                </div>
-                                <div class="mx-2 my-1">
-                                    <% if current_user == lyric.user && op == 'user-page' %>
-                                        <%= render 'lyrics/delete_button', lyric: lyric %>
                                     <% end %>
                                 </div>
+                                <!--<div class="col-3">
+                                    <%# @apply_count = apply_counts(lyric) %>
+                                    <%#= link_to lyric, 
+                                      class: "btn btn-link btn-block text-dark", 
+                                      style: "font-size: 1.2em; text-decoration: none;" do %>
+                                      <i class="far fa-handshake"></i>
+                                      <span class="badge"><%#= @apply_count %></span>
+                                    <%# end %>
+                                </div>-->
+                                <% if current_user == lyric.user && op == 'user-page' %>
+                                    <div class="col-3">
+                                        <%= render 'lyrics/delete_button', lyric: lyric %>
+                                    </div>
+                                <% end %>
                             </div>
                         </div>
-                        
                     </li>
                 <% end %>
             </ul>
