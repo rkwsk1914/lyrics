@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+#redline{
+  background-color : #F90B0B;
+  height: 50px;
+}
+
+#wrapper {
+  position : absolute;
+/*  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);*/
+}
+
+h1 {
+  font-family: 'HG創英角ﾎﾟｯﾌﾟ体';
+  letter-spacing: -0.1em;
+}
+
+h1 > span:nth-child(1) {
+  color: #F90B0B;
+}
+h1 > span:nth-child(2) {
+  color: #F9E325;
+}
+h1 > span:nth-child(3) {
+  color: #13A5F9;
+}
+h1 > span:nth-child(4) {
+  color: #F90B0B;
+}
+h1 > span:nth-child(5) {
+  color: #F9E325;
+}
+h1 > span:nth-child(6) {
+  color: #13A5F9;
+}
+
+#signup {
+  background-color : #22D426;
+  border-radius: 25px;
+}
+
+#login {
+  background-color : #F9E325;
+  border-radius: 25px;
+}
+
+#blueline{
+  background-color : #13A5F9;
+  height: 50px;
+  bottom :0;
+  position: absolute;
+
+}

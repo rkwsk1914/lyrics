@@ -1,9 +1,18 @@
-<div class="row d-flex justify-content-center">
-        <h1 class="text-center col-12 mb-4 mt-4">Lyrics</h1>
-        <div class="col-sm-6 col-12 text-center m-3 m-sm-0">
-            <%= link_to 'Sign Up', signup_path, class: 'col-sm-6 col-12 btn btn-secondary'%>
-        </div>
-        <div class="col-sm-6 col-12 text-center m-3 m-sm-0">
-            <%= link_to 'Login', login_path, class: 'col-sm-6 col-12 btn btn-secondary'%>
-        </div>
+<%= stylesheet_link_tag "sessions/index", :media => "all" %>
+
+<div id="redline" class="col-12"></div>
+<div class="container">
+    <div class="row d-flex justify-content-around">
+        <h1 class="text-center col-12 mt-5">
+            <span>L</span>
+            <span>y</span>
+            <span>r</span>
+            <span>i</span>
+            <span>c</span>
+            <span>s</span>
+        </h1>
+        <%= link_to 'Sign Up', signup_path, class: 'col-sm-4 col-9 btn m-4 text-dark', id: 'signup' %>
+        <%= link_to 'Login', login_path, class: 'col-sm-4 col-9 btn m-4 text-dark', id: 'login' %>
+    </div>
 </div>
+<div id="blueline" class="col-12"></div>

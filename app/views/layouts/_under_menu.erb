@@ -1,11 +1,13 @@
-<div class="col-10 d-flex justify-content-around mx-auto">
-    <!-- Button trigger modal -->
-    <a data-toggle="modal" data-target="#current_user" style="cursor: pointer;">
-        <%= render 'users/user_image_button', rem: "2.8rem", user: user %>
-    </a>
-    <%= render 'messages/talkroom_button', user: user %>
-    <%#= render 'requests/requests_button' %>
-    <%= link_to new_lyric_path, class: "btn btn-block btn-success rounded-circle my-0 mx-2",style: "width: 2.5rem; height: 2.5rem;" do %>
-        <i class="fas fa-pen"></i>
-    <% end %>
-<div>
+<% if logged_in?%>
+    <div class="col-10 d-flex justify-content-around mx-auto">
+        <!-- Button trigger modal -->
+        <a data-toggle="modal" data-target="#current_user" style="cursor: pointer;">
+            <%= render 'users/user_image_button', rem: "2.8rem", user: user %>
+        </a>
+        <%= render 'messages/talkroom_button', user: user %>
+        <%#= render 'requests/requests_button' %>
+        <%= link_to new_lyric_path, class: "btn btn-block btn-success rounded-circle my-0 mx-2",style: "width: 2.5rem; height: 2.5rem;" do %>
+            <i class="fas fa-pen"></i>
+        <% end %>
+    <div>
+<% end %>

@@ -1,49 +1,62 @@
-<div class="row">
-    <div class="col-10 mx-auto">
-        <h1 class="text-center col-sm-12 pt-3 pb-3 my-3">Sign Up</h1>
-        <%= form_with(model: @user, local: true) do |form| %>
-            <%= render 'layouts/error_message', model: @user %>
-            <div class="form-group row">
-                <div class="col-sm-2">
-                    <%= form.label :name, 'Name', class: 'col-form-label col-form-label' %>
+<%= stylesheet_link_tag "users/new", :media => "all" %>
+
+<div id="redline" class="col-12"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h1 class="text-center col-12 my-4">
+                <span>S</span>
+                <span>i</span>
+                <span>g</span>
+                <span>n</span>
+                <span>u</span>
+                <span>p</span>
+            </h1>
+            <%= form_with(model: @user, local: true) do |form| %>
+                <%= render 'layouts/error_message', model: @user %>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <%= form.label :name, 'Name', class: 'col-form-label col-form-label' %>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= form.text_field :name, class: 'form-control', placeholder: 'Your Name' %>
+                    </div>
                 </div>
-                <div class="col-sm-10">
-                    <%= form.text_field :name, class: 'form-control', placeholder: 'Your Name' %>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <%= form.label :email, 'Email', class: 'col-form-label' %>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= form.email_field :email, class: 'form-control', placeholder: 'example@exam.com' %>
+                        </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-2">
-                    <%= form.label :email, 'Email', class: 'col-form-label' %>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <%= form.label :password, 'Password', class: 'col-form-label' %>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= form.password_field :password, class: 'form-control', placeholder: '8文字以上のパスワード/ password is at least 8 characters.' %>
+                    </div>
                 </div>
-                <div class="col-sm-10">
-                    <%= form.email_field :email, class: 'form-control', placeholder: 'example@exam.com' %>
+                <div class="form-group row">
+                    <div class="col-sm-2">
+                        <%= form.label :password_confirmation, 'Confirmation', class: 'col-form-label' %>
+                    </div>
+                    <div class="col-sm-10">
+                        <%= form.password_field :password_confirmation, class: 'form-control', placeholder: '8文字以上のパスワード / password is at least 8 characters.' %>
+                    </div>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-2">
-                    <%= form.label :password, 'Password', class: 'col-form-label' %>
+                <div class="form-group row">
+                    <% profile_default = 'はじめまして、よろしくお願いします。/ Hello! Nice to meet you!'  %>
+                    <%= form.text_field :profile, value: profile_default, class: 'd-none' %>
                 </div>
-                <div class="col-sm-10">
-                    <%= form.password_field :password, class: 'form-control', placeholder: '8文字以上のパスワード/ password is at least 8 characters.' %>
+                <%= hidden_field_tag :picture, nil %>
+                <div class="form-group row d-flex justify-content-around">
+                        <%= form.submit 'Sign Up', class: 'btn col-9 col-sm-4 m-4 m-sm-2', id: 'signup' %>
+                        <%= link_to 'Back', root_url, class: 'btn btn-light btn col-9 col-sm-4 m-4 m-sm-2', id: 'totop' %>
                 </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-2">
-                    <%= form.label :password_confirmation, 'Confirmation', class: 'col-form-label' %>
-                </div>
-                <div class="col-sm-10">
-                    <%= form.password_field :password_confirmation, class: 'form-control', placeholder: '8文字以上のパスワード / password is at least 8 characters.' %>
-                </div>
-            </div>
-            <div class="form-group row">
-                <% profile_default = 'はじめまして、よろしくお願いします。/ Hello! Nice to meet you!'  %>
-                <%= form.text_field :profile, value: profile_default, class: 'd-none' %>
-            </div>
-            <%= hidden_field_tag :picture, nil %>
-            <div class="form-group row d-flex justify-content-around">
-                <%= form.submit 'Sign Up', class: 'btn btn-secondary btn-block col-3 offset-4' %>
-                <%= link_to 'Back', root_url, class: 'btn btn-light btn-block col-3' %>
-            </div>
-        <% end %>
+            <% end %>
+        </div>
     </div>
 </div>
+<div id="blueline" class="col-12"></div>

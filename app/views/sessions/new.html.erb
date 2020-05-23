@@ -1,28 +1,40 @@
-<div class="row">
-    <div class="col-10 mx-auto">
-        <h1 class="text-center col-sm-12 pt-3 pb-3">Log in</h1>
-        <%= form_with(url: login_path, scope: :session, local: true) do |form| %>
+<%= stylesheet_link_tag "sessions/new", :media => "all" %>
 
-            <div class="form-group row">
-                <div class="col-sm-2">
-                    <%= form.label :email, 'Email', class: 'col-form-label' %>
-                </div>
-                <div class="col-sm-10">
-                    <%= form.email_field :email, class: 'form-control', placeholder: '登録したメールアドレス / Registered email address.' %>
-                </div>
+<div id="redline" class="col-12"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <h1 class="text-center col-12 my-4">
+                    <span>L</span>
+                    <span>o</span>
+                    <span>g</span>
+                    <span>i</span>
+                    <span>n</span>
+                </h1>
+                <%= form_with(url: login_path, scope: :session, local: true) do |form| %>
+        
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <%= form.label :email, 'Email', class: 'col-form-label' %>
+                        </div>
+                        <div class="col-sm-10">
+                            <%= form.email_field :email, class: 'form-control', placeholder: '登録したメールアドレス / Registered email address.' %>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-2">
+                            <%= form.label :password, 'Password', class: 'col-form-label' %>
+                        </div>
+                        <div class="col-sm-10">
+                            <%= form.password_field :password, class: 'form-control', placeholder: '8文字以上のパスワード/ password is at least 8 characters.' %>
+                        </div>
+                    </div>
+                    <div class="form-group row d-flex justify-content-around">
+                        <%= form.submit 'Log in', class: 'btn col-sm-4 col-9 m-4 m-sm-2', id: 'login' %>
+                        <%= link_to 'Back', root_url, class: 'btn btn-light col-sm-4 col-9 m-4 m-sm-2', id: 'totop' %>
+                    </div>
+                <% end %>
             </div>
-            <div class="form-group row">
-                <div class="col-sm-2">
-                    <%= form.label :password, 'Password', class: 'col-form-label' %>
-                </div>
-                <div class="col-sm-10">
-                    <%= form.password_field :password, class: 'form-control', placeholder: '8文字以上のパスワード/ password is at least 8 characters.' %>
-                </div>
-            </div>
-            <div class="form-group row d-flex justify-content-around">
-                <%= form.submit 'Log in', class: 'btn btn-secondary btn-block offset-4 col-3' %>
-                <%= link_to 'Back', root_url, class: 'btn btn-light btn-block col-3' %>
-            </div>
-        <% end %>
+        </div>
     </div>
-</div>
+<div id="blueline" class="col-12"></div>
