@@ -1,5 +1,5 @@
 <h1 class="text-center my-3">Lyric List</h1>
-<div class="col-12 col-sm-9 offset-sm-2">
+<div class="col-12 col-sm-9 offset-sm-2 pb-5 pb-sm-auto">
     <%= render 'lyrics/list_tabs', user: current_user %>
     <%= render 'lyric_list', op: 'lyric-page' %>
     <%= paginate @lyrics %>

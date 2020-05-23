@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+#side_menu {
+  background-color: #13A5F9;
+  position: fixed;
+  height: 100vh;
+  top: 67px;
+}
+
+.under_button{
+  display: block; 
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  background-color: white;
+}
+
+#side_menu > li {
+  height: 3rem;
+}

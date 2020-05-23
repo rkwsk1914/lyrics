@@ -10,6 +10,9 @@
 
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        
+        <%= stylesheet_link_tag "animate", :media => "all" %>
+        <%= stylesheet_link_tag "main", :media => "all" %>
     </head>
     <% if logged_in? %>
         <%= render 'users/current_user_card', user: @current_user %>
@@ -19,10 +22,10 @@
         <% if logged_in? %>
             <%= render 'layouts/navbar'%>
         <% end %>
-        <div class="">
-            <%= render 'layouts/side_menu', user: @current_user %>
+        <%= render 'layouts/side_menu', user: @current_user %>
+        <div>
             <%= yield %>
-            <%= render 'layouts/under_menu', user: @current_user %>
         </div>
+        <%= render 'layouts/under_menu', user: @current_user %>
     </body>
 </html>

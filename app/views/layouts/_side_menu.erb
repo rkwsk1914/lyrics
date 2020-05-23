@@ -1,23 +1,29 @@
+<%= stylesheet_link_tag "layouts/side_menu", :media => "all" %>
+
 <% if logged_in? %>
-<div class="">
-<ul class="list-unstyled">
-    <li data-toggle="tooltip" data-placement="right" title="User Card" class="d-flex justify-content-end">
-        <!-- Button trigger modal -->
-        <a data-toggle="modal" data-target="#current_user" style="cursor: pointer;">
-            <%= render 'users/user_image_button', rem: "4rem", user: user %>
-        </a>
-    </li>
-    <li data-toggle="tooltip" data-placement="right" title="Message" class="my-1 d-flex justify-content-end">
-        <%= render 'messages/talkroom_button', user: user %>
-    </li>
-    <!--<li data-toggle="tooltip" data-placement="right" title="Application" class="my-1 d-flex justify-content-end">
-        <%#= render 'requests/requests_button' %>
-    </li>-->
-    <li data-toggle="tooltip" data-placement="right" title="Lyric Post" class="my-1 d-flex justify-content-end">
-        <%= link_to new_lyric_path, class: "btn btn-block btn-outline-success rounded-circle mr-2",style: "width: 3rem; height: 3rem;" do %>
-            <i class="fas fa-pen"></i>
-        <% end %>
-    </li>
-</ul>
+<div class="container m-0 p-0">
+    <div class="row">
+        <ul class="d-none d-sm-block col-sm-2" id="side_menu">
+            <li data-toggle="tooltip" data-placement="right" title="User Card" class="my-1 d-flex justify-content-end">
+                <!-- Button trigger modal -->
+                <a data-toggle="modal" data-target="#current_user" class="under_button rounded-circle">
+                    <%= render 'users/user_image_button', rem: "3rem", user: user %>
+                </a>
+            </li>
+            <li data-toggle="tooltip" data-placement="right" title="Message" class="my-1 d-flex justify-content-end">
+                <%= render 'messages/talkroom_button', user: user %>
+            </li>
+            <!--<li data-toggle="tooltip" data-placement="right" title="Application" class="my-1 d-flex justify-content-end">
+                <%#= render 'requests/requests_button' %>
+            </li>-->
+            <li data-toggle="tooltip" data-placement="right" title="Lyric Post" class="my-1 d-flex justify-content-end">
+                <%= link_to new_lyric_path, class: "under_button btn rounded-circle" do %>
+                    <i class="fas fa-pen"></i>
+                <% end %>
+            </li>
+        </ul>
+    </div>
 </div>
 <% end %>
+
+<%# under_button my-1 d-flex justify-content-end %>

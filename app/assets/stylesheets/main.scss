@@ -9,3 +9,11 @@
 #contentBox::-webkit-scrollbar {  /* Chrome, Safari 対応 */
     display:none;
 }
+
+html {
+    height: 100vh;
+}
+
+body {
+    height: 100%;
+}

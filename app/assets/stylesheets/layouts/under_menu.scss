@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 576px){
+  #under_menu {
+    bottom :0;
+    position: fixed;
+    background-color: #13A5F9;
+  }
+  
+  .under_button{
+    cursor: pointer;
+    width: 2.8rem;
+    height: 2.8rem;
+    transform: translateY(-50%);
+    background-color: white;
+  }
+}
