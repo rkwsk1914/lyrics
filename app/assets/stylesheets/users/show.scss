@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+#user_title {
+  position: relative;
+  top: 60px;
+}
+
+#wrapper {
+  margin-top: 110px;
+  margin-bottom: 75px;
+  position: fixed;
+}
+
+a {
+  text-decoration: none;
+}
+
+.activate, #lyrics {
+  background-color: #F9E325;
+}
+
+#lyrics {
+  overflow: hidden;
+}
+
+#lyrics li {
+  background-color: white;
+}
+
+small {
+  font-size: 0.6em;
+}
+
+#ly-date {
+  font-size: 0.6em;
+}
+
+#delete_button{
+  border-radius: 25px;
+}
+
+#contentBox {
+  overflow: hidden;
+  height: 63vh;
+  overflow-y: scroll;
+  margin-bottom: 50px;
+  background-color: #F9E325;
+  -ms-overflow-style: none;    /* IE, Edge 対応 */
+  scrollbar-width: none;       /* Firefox 対応 */
+}
+
+#contentBox::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+    display:none;
+}
+
+@media screen and (max-width: 576px){
+  #contentBox {
+    height: 68vh;  
+  }
+}

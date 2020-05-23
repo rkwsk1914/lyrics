@@ -1,35 +1,35 @@
-<ul class="nav nav-tabs" id="tab-var">
-    <li class="nav-item col-3 p-0">
+<ul class="nav nav-tabs px-2 px-sm-0" id="tab-var">
+    <li class="nav-item col-3 p-0 text-center">
         <a 
          href="<%= user_path(@user) %>" 
-         class="nav-link <%= 'active' if current_page?(user_path(@user)) %>"
+         class="nav-link <%= 'activate' if current_page?(user_path(@user)) %>"
          style="font-size: 0.9em;"
         >
             Lyrics
         </a>
     </li>
-    <li class="nav-item col-3 p-0">
+    <li class="nav-item col-3 p-0 text-center">
         <a
          href="<%= followings_user_path(@user) %>"
-         class="nav-link <%= 'active' if current_page?(followings_user_path(@user)) %>"
+         class="nav-link <%= 'activate' if current_page?(followings_user_path(@user)) %>"
          style="font-size: 0.9em;"
         >
             Follows
         </a>
     </li>
-    <li class="nav-item col-3 p-0"> 
+    <li class="nav-item col-3 p-0 text-center"> 
         <a 
          href="<%= followers_user_path(@user) %>" 
-         class="nav-link <%= 'active' if current_page?(followers_user_path(@user)) %>"
+         class="nav-link <%= 'activate' if current_page?(followers_user_path(@user)) %>"
          style="font-size: 0.9em;"
         >
             Followers
         </a>
     </li>
-    <li class="nav-item col-3 p-0">
+    <li class="nav-item col-3 p-0 text-center">
         <a 
          href="<%= likes_user_path(@user) %>" 
-         class="nav-link <%= 'active' if current_page?(likes_user_path(@user)) %>"
+         class="nav-link <%= 'activate' if current_page?(likes_user_path(@user)) %>"
          style="font-size: 0.9em;"
          >
             Favorites

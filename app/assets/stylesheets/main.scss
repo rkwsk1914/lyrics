@@ -22,3 +22,7 @@ body {
     position: relative;
     top: 67px;
 }
+
+.modal-dialog {
+    z-index: 1500;
+}
