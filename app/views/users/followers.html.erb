@@ -1,7 +1,11 @@
-<%= render 'users/user_title', user: @user %>
-<div class="col-12 col-sm-9 offset-sm-2">
-    <%= render 'tabbar' %>
-    <div class="border border-top-0" style="height: 55vh; overflow-y: scroll;">
-        <%= render 'relationships/follow_list', follows: @followers %>
+<%= stylesheet_link_tag "users/follow", :media => "all" %>
+
+    <%= render 'users/user_title', user: @user %>
+<div id="wrapper">
+    <div class="col-12 col-sm-9 offset-sm-2 p-0">
+        <%= render 'tabbar' %>
+        <div id="contentBox">
+            <%= render 'relationships/follow_list', follows: @followers %>
+        <div>
     </div>
 </div>
