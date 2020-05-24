@@ -5,8 +5,7 @@
         <% user = User.find(talkroom.user_id) %>
         <a 
          href="<%= talkroom_path(talkroom) %>" 
-         class="nav-link <%= 'activate rounded-0' if current_page?(talkroom_path(talkroom)) %>"
-         style="font-size: 0.9em;"
+         class="talkroom nav-link <%= 'activate rounded-0' if current_page?(talkroom_path(talkroom)) %>"
         >
             <%= roommate.name %>
             <% count_unread = counts_unread_oneroom(talkroom) %>

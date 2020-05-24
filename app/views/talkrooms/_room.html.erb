@@ -1,6 +1,6 @@
 <div class="col-12 col-sm-9 offset-sm-2 p-0">
     <div class="d-flex justify-content-start">
-        <div class="col-12 col-sm-3 p-0  <%#= 'd-none d-sm-block' unless op == "talkroom_top" %>"  id="room_list">
+        <div class="col-12 col-sm-3 p-0  <%= 'd-none d-sm-block' unless op == "talkroom_top" %>"  id="room_list">
             <%= render 'talkrooms/talkroom_list' %>
         </div>
         <% unless op == "talkroom_top" %>

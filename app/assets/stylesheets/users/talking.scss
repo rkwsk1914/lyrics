@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+#room {
+    position: relative;
+    top: 67px;
+}
+
+#room_list {
+  top: 91px;
+  position: relative;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color : #444;
+}
+
+.talkroom {
+  font-size: 0.9em;
+}
+
+@media screen and (max-width: 576px){
+  .talkroom {
+    font-size: 1.3em;
+    background-color: #F9E325;
+    margin: 3px 0;
+  }
+  
+  .talkroom:active {
+    background-color: white;
+  }
+}
