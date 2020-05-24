@@ -76,7 +76,8 @@ class UsersController < ApplicationController
   end
   
   def talkings
-    @talkrooms = Talkroom.where(user_id: current_user.id)
+    user_find()
+    @talkrooms = Talkroom.all.where(user_id: current_user.id)
   end
 
   private

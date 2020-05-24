@@ -16,20 +16,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="row d-flex justify-content-start pl-3">
-                            <% if user.picture? %>
-                                <img 
-                                 src="<%= user.picture.to_s %>" 
-                                 class="border rounded-circle mx-3" 
-                                 style="width: 4rem; height: 4rem;"
-                                >
-                            <% else %>
-                                <img 
-                                 src="/user_icon.png" 
-                                 class="border rounded-circle mx-3" 
-                                 style="width: 4rem; height: 4rem;"
-                                >
-                            <% end %>
+                        <div class="row d-flex justify-content-start pl-5">
+                            <%= render 'users/user_image_button',rem: "4rem", user: user %>
                             <table>
                                 <tbody>
                                     <tr>
@@ -59,8 +47,8 @@
                     </div>
                     <div class="modal-footer">
                         <% if @user == current_user %>
-                            <%= link_to 'Logout', logout_path, method: :delete, class: "btn btn-dark" %>
-                            <%= link_to 'Edit', edit_user_path(user), class: "btn btn-light" %>
+                            <%= link_to 'Logout', logout_path, method: :delete, class: "btn logout" %>
+                            <%= link_to 'Edit', edit_user_path(user), class: "btn edit" %>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <% else %>
                             <%= render 'messages/message_button', user: @user%>

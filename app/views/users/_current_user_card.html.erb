@@ -16,7 +16,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="row d-flex justify-content-start pl-3">
+                        <div class="row d-flex justify-content-start pl-5">
                             <%= render 'users/user_image_button',rem: "4rem", user: user %>
                             <table>
                                 <tbody>
@@ -46,8 +46,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                            <%= link_to 'Logout', logout_path, method: :delete, class: "btn btn-dark" %>
-                            <%= link_to 'Edit', edit_user_path(user), class: "btn btn-light" %>
+                            <%= link_to 'Logout', logout_path, method: :delete, class: "btn logout" %>
+                            <%= link_to 'Edit', edit_user_path(user), class: "btn edit" %>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>

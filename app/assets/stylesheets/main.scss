@@ -26,3 +26,24 @@ body {
 .modal-dialog {
     z-index: 1500;
 }
+
+.modal-footer .btn {
+    border-radius: 25px;
+}
+
+.modal .edit {
+    background-color: #22D426;
+    color: white;
+}
+
+.modal .logout{
+    background-color: #13A5F9;
+    color: white;
+}
+
+
+.modal #message, .modal #message_yet{
+  background-color: #22D426;
+  color: white;
+  width: 100%;
+}

@@ -39,6 +39,16 @@ small {
   border-radius: 25px;
 }
 
+#like_link {
+  color: #F90B0B;
+}
+
+#comment_link {
+  color: #13A5F9;
+  font-size: 1.2em; 
+  text-decoration: none;
+}
+
 #contentBox {
   overflow: hidden;
   height: 63vh;

@@ -1,26 +1,28 @@
+<div class="col-12">
 <%= form_with(model: message, local: true) do |form| %>
     <% render 'layouts/error_message', model: message %>
-    <div class="row d-flex justify-content-around">
-        <div class="col-11 form-group pr-0">
-            <%= form.text_area :content, class: 'form-control',id: "textarea", size: "10x1", style: "border-radius: 20px;" %>
+    <div class="row d-flex justify-content-around" id="form-ground">
+        <div class="col-10 form-group p-0">
+            <%= form.text_area :content, class: 'form-control',id: "textarea", size: "10x1" %>
             <script type="text/javascript">
                 $(function() {
                 var lineHeight = parseInt($('#textarea').css('lineHeight'));
                 $('#textarea').on('input', function(evt) {
                     let lines = ($(this).val() + '\n').match(/\n/g).length;
                     $(this).height(lineHeight * lines);
+                    $(window).scrollTop(($("#contentBox")[0].scrollHeight));
                 });
             });
             </script>
         </div>
         <%= hidden_field_tag :talkroom_id, @sentroom.id %>
-        <div class="form-group col-1 mt-auto pl-0">
+        <div class="form-group col-2 mt-auto p-0">
         <%= form.button :type => "submit",
-          class: "btn btn-outline-secondary btn-block text-dark",
-          style: 'text-decoration: none; font-size: 1.2em;' do %>
+          class: "btn sent_btn btn-sm" do %>
             <i class="far fa-paper-plane"></i>
         <% end %>
         </div>
     </div>
     <% link_to 'Back', user_path(current_user), class: 'btn btn-light btn-block col-3 m-0' %>
 <% end %>
+</div>

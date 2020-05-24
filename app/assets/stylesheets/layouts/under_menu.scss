@@ -3,6 +3,7 @@
 @media screen and (max-width: 576px){
   #under_menu {
     bottom :0;
+    transform: translateY(3%);
     position: fixed;
     background-color: #13A5F9;
     z-index: 3;
@@ -10,9 +11,10 @@
   
   .under_button{
     cursor: pointer;
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 3rem;
+    height: 3rem;
     transform: translateY(-50%);
     background-color: white;
+    border: 1px #13A5F9 solid;
   }
 }

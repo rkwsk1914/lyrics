@@ -1,9 +1,7 @@
-<div id="contentBox" class="border px-0 col-12", 
-style="height: 70vh; overflow: scroll;" >
+<div id="contentBox" class="px-0 col-12" >
 <script>
 $(window).on('load', () => {
   $('#contentBox').scrollTop(($("#contentBox")[0].scrollHeight));  
-  console.log('OK');
 });
 </script>
     <% if @messages.any? %>
@@ -11,30 +9,29 @@ $(window).on('load', () => {
         <% @messages.each do |message| %>
             <% user = User.find(message.talkroom.user_id) %>
             <% if user == current_user %>
-                <li class="col-9 offset-3 d-flex justify-content-end my-4">
-                    <div class="mt-auto">
-                        <%= l message.created_at, format: :short %>
+                <li class="col-9 offset-3 row d-flex justify-content-end my-4">
+                    <div class="mt-auto msg col-5 p-0 pr-1 m-0 row d-flex justify-content-end" >
+                        <span class="col-12 p-0 text-right"><%= l message.created_at, format: :short %></span>
                         <% if message.read == true %>
-                            <span>既読</span>
+                            <span class="col-12 p-0 text-right">既読</span>
                         <% else %>
-                            <span>未読</span>
+                            <span class="col-12 p-0 text-right">未読</span>
                         <% end %>
                     </div>
-                    <div class="border p-1 col-7", style="border-radius: 10px;">
-                        <%= message.content %>    
+                    <div class="p-1 pl-2 col-7 bg-white msg-r">
+                        <p><%= message.content %></p>
                     </div>
                 </li>
             <% else %>
-                <li class="col-9 d-flex justify-content-end my-4">
-                    <a class="d-flex justify-content-center" data-toggle="modal" data-target="#other_user" style="cursor: pointer;">
+                <li class="col-11 row p-0 d-flex justify-content-start my-4 pl-4">
+                    <a class="d-flex justify-content-center mr-2 rounded-circle bg-white user-image" data-toggle="modal" data-target="#other_user" style="cursor: pointer;">
                         <%= render 'users/user_image_button',rem: "2.5rem", user: user %>
-                        <span><%= user.name %></span>
                     </a>
-                    <div class="border p-1 col-7", style="border-radius: 10px;">
-                        <%= message.content %>    
+                    <div class="p-1 pl-2 col-5 bg-white msg-l">
+                        <p><%= message.content %></p>
                     </div>
-                    <div class="mt-auto">
-                        <%= l message.created_at, format: :short %>
+                    <div class=" col-4 mt-auto msg p-0 pl-1">
+                        <span><%= l message.created_at, format: :short %></span>
                     </div>
                 </li>
             <% end %>

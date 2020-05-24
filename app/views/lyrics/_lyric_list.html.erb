@@ -4,13 +4,15 @@
                 <% @lyrics.each do |lyric| %>
                     <% user = User.find(lyric.user_id)%>
                     <li class="media p-sm-3 col-11 mx-auto my-3" >
-                        <div class="lyric row d-flex justify-content-around">
-                            <%= link_to user, class: "ml-3 mt-3 media-body col-2 p-0" do %>
-                                <%= render 'users/user_image_button',rem: "3rem", user: user %>
-                                <span class="text-dark" id="ly-date"><%= l lyric.created_at, format: :smlong %></span>
+                        <div class="col-12 p-0 lyric row d-flex justify-content-around">
+                            <%= link_to user, class: "ml-3 mr-3 mt-3 media-body col-2 col-sm-1 p-0" do %>
+                                <div class="col-12 p-0">
+                                    <%= render 'users/user_image_button',rem: "3rem", user: user %>
+                                </div>
+                                <span class="col-12 p-0 text-dark" id="ly-date"><%= l lyric.created_at, format: :smlong %></span>
                             <% end %>
                             <%= link_to lyric, class: "media-body text-dark col-10 p-0 mt-3 ", style: "text-decoration: none;" do %>
-                                <h5><%= lyric.title %> <small>by <%= user.name %></small></h5>
+                                <h5 class="mb-3"><%= lyric.title %> <small>by <%= user.name %></small></h5>
                                 <section>
                                     <% if lyric.content.length < 75 %>
                                         <%= lyric.content %>
@@ -20,12 +22,12 @@
                                 </section>
                             <% end %>
                             <div class="col-12 row d-flex justify-content-end">
-                                <div class="col-3">
+                                <div class="col-3 col-sm-1">
                                     <%= render 'favorites/favorite_link', lyric: lyric %>
                                 </div>
                                 <div class="col-3">
                                     <% @comment_count = comment_counts(lyric) %>
-                                    <%= link_to lyric, class: "btn btn-link btn-block text-dark", style: "font-size: 1.2em; text-decoration: none;" do %>
+                                    <%= link_to lyric, class: "btn btn-link btn-block",id: "comment_link" do %>
                                           <i class="far fa-comment"></i>
                                           <span class="badge"><%= @comment_count %></span>
                                     <% end %>
@@ -39,11 +41,11 @@
                                       <span class="badge"><%#= @apply_count %></span>
                                     <%# end %>
                                 </div>-->
-                                <% if current_user == lyric.user && op == 'user-page' %>
                                     <div class="col-3">
+                                    <% if current_user == lyric.user && op == 'user-page' %>
                                         <%= render 'lyrics/delete_button', lyric: lyric %>
+                                    <% end %>
                                     </div>
-                                <% end %>
                             </div>
                         </div>
                     </li>

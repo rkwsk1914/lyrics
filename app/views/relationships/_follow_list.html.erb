@@ -3,21 +3,13 @@
             <ul class="list-unstyled">
                 <% follows.each do |fuser| %>
                     <li class="p-3 border">
-                        <%= link_to fuser, class: "media col-12", style: "text-decoration: none;" do %>
-                            <% if fuser.picture? %>
-                                <img 
-                                 src="<%= fuser.picture.to_s %>" 
-                                 class="border rounded-circle" 
-                                 style="width: 4rem; height: 4rem;"
-                                >
-                            <% else %>
-                                <img 
-                                 src="/user_icon.png" 
-                                 class="border rounded-circle" 
-                                 style="width: 4rem; height: 4rem;"
-                                >
-                            <% end %>
-                            <div class="media-body ml-3">
+                        <%= link_to fuser, class: "media", id: "user_link" do %>
+                            <div class="">
+                                <div class="rounded-circle p-0 user_image">
+                                    <%= render 'users/user_image_button', rem: "4rem", user: fuser %>
+                                </div>
+                            </div>
+                            <div class=" col-7 media-body ml-3">
                                 <h6 class="mt-0 mb-1"><%= fuser.name %></h6>
                                 <section class="">
                                     <%= fuser.profile %>

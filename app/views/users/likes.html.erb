@@ -1,11 +1,11 @@
 <%= stylesheet_link_tag "users/show", :media => "all" %>
 
+<div class="col-12 col-sm-9 offset-sm-2 p-0">
     <%= render 'users/user_title', user: @user %>
-<div id="wrapper">
-    <div class="col-12 col-sm-9 offset-sm-2 p-0">
-        <%= render 'tabbar' %>
-        <div id="contentBox">
-            <%= render 'lyrics/lyric_list', op: 'user-page' %>
-        <div>
-    </div>
+</div>
+<div class="col-12 col-sm-9 offset-sm-2 p-0" id="wrapper">
+    <%= render 'tabbar' %>
+    <div id="contentBox">
+        <%= render 'lyrics/lyric_list', op: 'user-page' %>
+    <div>
 </div>

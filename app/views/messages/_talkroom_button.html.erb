@@ -1,5 +1,5 @@
 <%= link_to talkings_user_path(user),
-    class: "under_button btn rounded-circle border" do %>
+    class: "under_button btn rounded-circle" do %>
     <i class="far fa-envelope"></i>
     <% unless @count_unread == 0 %>
         <span class="badge badge-secondary"><%= @count_unread %></span>

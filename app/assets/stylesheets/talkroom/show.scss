@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+#room {
+    position: relative;
+    top: 67px;
+}
+
+#room_list {
+  top: 91px;
+  position: relative;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color : #444;
+}
+
+.user-image {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.msg-r, .msg-l {
+  border-radius: 10px;
+}
+
+.msg-r p, .msg-l p {
+  font-size: 0.8em;
+}
+
+.msg-r::after {
+  content: "";
+  background-color: none;
+  display: block;
+  width: 0;
+  height: 0;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: -6%;
+  left: 91%;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-bottom: 13px solid white;
+}
+
+.msg-l::after {
+  content: "";
+  background-color: none;
+  display: block;
+  width: 0;
+  height: 0;
+  transform: rotate(45deg);
+  position: absolute;
+  top: -6%;
+  left: -4%;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-bottom: 13px solid white;
+}
+
+.activate, #contentBox,#room  {
+  background-color: #F9E325;
+}
+
+#contentBox {
+  overflow: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;    /* IE, Edge 対応 */
+  scrollbar-width: none;       /* Firefox 対応 */
+}
+
+#contentBox::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+    display:none;
+}
+.msg {
+  font-size: 0.8em;
+  margin: 0 5px;
+}
+
+.sent_btn{
+  background-color: #22D426;
+  color: white;
+  text-decoration: none; 
+  font-size: 1.2em;
+  border-radius: 0px 25px 25px 0px;
+  width: 100%;
+}
+
+#textarea {
+  border-radius: 20px 0px 0px 20px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 576px){
+   #form-ground {
+    background-color: #F9E325;
+    padding-bottom: 12%;
+  }
+  
+  #room{
+    top: 45px;
+  }
+  
+  #friend {
+    text-decoration: none;
+    color: #13A5F9;
+    background-color: #F9E325;
+  }
+}
