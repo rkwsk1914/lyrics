@@ -3,10 +3,14 @@
 #redline{
   background-color : #F90B0B;
   height: 50px;
+  position: fixed;
+  z-index: 5;
 }
 
-#wrapper {
-  position : absolute;
+.container {
+  top: 50px;
+  position: relative;
+  margin-bottom: 50px;
 }
 
 h1 {
@@ -41,8 +45,8 @@ h1 > span:nth-child(6) {
   background-color : #13A5F9;
   height: 50px;
   bottom :0;
-  position: absolute;
-
+  position: fixed;
+  z-index: 5;
 }
 
 #signup {

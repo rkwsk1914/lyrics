@@ -1,7 +1,7 @@
 <%= render 'users/other_user_card', user: user %>
     <div class="my-4" data-toggle="tooltip" data-placement="right" title="User Card" id="user_title">
         <!-- Button trigger modal -->
-        <a class="d-flex justify-content-center" data-toggle="modal" data-target="#other_user" style="cursor: pointer;">
+        <a class="d-flex justify-content-center mx-auto" data-toggle="modal" data-target="#other_user" id="user_link" style="cursor: pointer;">
             <%= render 'users/user_image_button',rem: "4rem", user: user %>
             <h1 style="line-height: 4rem;"><%= user.name %></h1>
         </a>

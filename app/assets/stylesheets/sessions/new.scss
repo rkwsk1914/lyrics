@@ -3,6 +3,14 @@
 #redline{
   background-color : #F90B0B;
   height: 50px;
+  position: fixed;
+  z-index: 5;
+}
+
+.container {
+  top: 50px;
+  position: relative;
+  margin-bottom: 50px;
 }
 
 #wrapper {
@@ -41,8 +49,8 @@ h1 > span:nth-child(5) {
   background-color : #13A5F9;
   height: 50px;
   bottom :0;
-  position: absolute;
-
+  position: fixed;
+  z-index: 5;
 }
 
 #login {
