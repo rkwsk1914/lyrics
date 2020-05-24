@@ -1,5 +1,7 @@
-<h1 class="text-center my-3">Lyric Edit</h1>
-<div class="col-12 col-sm-9 offset-sm-2">
-    <% @op = 'Save' %>
-    <%= render 'lyric_form', lyric: @lyric %>
+<%= stylesheet_link_tag "lyrics/new", :media => "all" %>
+
+<h1 class="text-center my-3" id="user_title">Lyric Post</h1>
+<div class="col-12 col-sm-9 offset-sm-2" id="wrapper">
+        <% @op = 'save' %>
+        <%= render 'lyric_form', lyric: @lyric %>
 </div>
