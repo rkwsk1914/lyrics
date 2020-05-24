@@ -5,7 +5,9 @@
         </div>
         <% unless op == "talkroom_top" %>
             <div class="co-12 col-sm-9 p-0 my-4" id="room">
-                <%= link_to '<< Friends List', talkings_user_path(current_user), class:"d-sm-none btn btn-link col-3", id:"friend" %>
+                <div class="col-12 backtolist p-0">
+                    <%= link_to '<< Friends List', talkings_user_path(current_user), class:"d-sm-none btn btn-link col-3", id:"friend" %>    
+                </div>
                 <%= render 'users/other_user_card', user: @user %>
                 <%= render 'messages/message_list' %>
                 <%= render 'messages/message_form', message: @message %>

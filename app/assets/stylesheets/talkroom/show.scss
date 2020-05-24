@@ -1,7 +1,11 @@
 @charset "UTF-8";
 
+.backtolist{
+  position: fixed;
+  z-index: 1;
+}
 #room {
-    position: relative;
+    position: fixed;
     top: 67px;
 }
 
@@ -37,8 +41,8 @@ a {
   height: 0;
   transform: rotate(-45deg);
   position: absolute;
-  top: -6%;
-  left: 91%;
+  top: -3%;
+  left: 86%;
   border-left: 13px solid transparent;
   border-right: 13px solid transparent;
   border-bottom: 13px solid white;
@@ -52,14 +56,14 @@ a {
   height: 0;
   transform: rotate(45deg);
   position: absolute;
-  top: -6%;
-  left: -4%;
+  top: -4%;
+  left: -6%;
   border-left: 13px solid transparent;
   border-right: 13px solid transparent;
   border-bottom: 13px solid white;
 }
 
-.activate, #contentBox,#room  {
+.backtolist, .activate, #contentBox,#room  {
   background-color: #F9E325;
 }
 
@@ -92,10 +96,14 @@ a {
   box-sizing: border-box;
 }
 
+.talkroom {
+  font-size: 0.9em;
+}
+
 @media screen and (max-width: 576px){
    #form-ground {
     background-color: #F9E325;
-    padding-bottom: 60px;
+    padding-bottom: 70px;
   }
   
   #room{
@@ -107,8 +115,34 @@ a {
     color: #13A5F9;
     background-color: #F9E325;
   }
-}
-
-.talkroom {
-  font-size: 0.9em;
+  
+  .msg-r::after {
+    content: "";
+    background-color: none;
+    display: block;
+    width: 0;
+    height: 0;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: -3%;
+    left: 86%;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    border-bottom: 13px solid white;
+  }
+  
+  .msg-l::after {
+    content: "";
+    background-color: none;
+    display: block;
+    width: 0;
+    height: 0;
+    transform: rotate(45deg);
+    position: absolute;
+    top: -6%;
+    left: -4%;
+    border-left: 13px solid transparent;
+    border-right: 13px solid transparent;
+    border-bottom: 13px solid white;
+  }
 }
