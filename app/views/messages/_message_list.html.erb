@@ -1,7 +1,7 @@
 <div id="contentBox" class="px-0 col-12" >
 <script>
-$(window).on('load', () => {
-  $(window).scrollTop(($("#contentBox")[0].scrollHeight));  
+$("#contentBox").on('load', () => {
+  $("#contentBox").scrollTop(($("#contentBox")[0].scrollHeight));  
 });
 </script>
     <% if @messages.any? %>
