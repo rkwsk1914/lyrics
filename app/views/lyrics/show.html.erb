@@ -1,8 +1,11 @@
+<%= stylesheet_link_tag "lyrics/show", :media => "all" %>
+
+
 <div class="offset-sm-2">
-    <h1 class="text-center my-3">Lyric Detail</h1>
-    <div class="row d-flex justify-content-around">
-        <div class="col-2 offset-1 d-none d-sm-block">
-            <%= link_to user_path(@user), style: "text-decoration: none; cursor: pointer;" do  %>
+    <h1 class="text-center my-3" id="user_title">Lyric Detail</h1>
+    <div class="row d-flex justify-content-around m-0 " id="wrapper">
+        <div class="col-2 d-none d-sm-block p-0 px-2" id="lyric_menu_sm">
+            <%= link_to user_path(@user), id: "user_link", class:"row d-flex justify-content-around m-0" do  %>
                 <%= render 'users/user_image_button',rem: "5rem", user: @user %>
                 <p class="text-center col-12"><%= @user.name %></p>
             <% end %>
@@ -24,7 +27,8 @@
                 <% end %>
             </div>
         </div>
-        <div class="col-10 d-block d-sm-none d-flex justify-content-between mb-3 mx-auto">
+        
+        <div class="col-10 d-block d-sm-none d-flex justify-content-between my-3 mx-auto" id="lyric_menu">
             <%= link_to user_path(@user), style: "text-decoration: none; cursor: pointer;" do  %>
                 <%= render 'users/user_image_button',rem: "3rem", user: @user %>
             <% end %>
@@ -34,11 +38,11 @@
             <div class="">
                 <%= render 'comments/comment_link', lyric: @lyric %>
             </div>
-            <div class="">
-                <%= render 'requests/apply_link', apply: @apply, lyric: @lyric %>
-            </div>
+            <!--<div class="">
+                <%#= render 'requests/apply_link', apply: @apply, lyric: @lyric %>
+            </div>-->
         </div>
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-6 p-sm-0">
             <%= render 'lyrics/lyric_detail', lyric: @lyric, user: @user %>
             <div class="mx-2 my-1 d-sm-none d-block">
                 <% if current_user == @lyric.user %>
@@ -47,7 +51,7 @@
                 <% end %>
             </div>
         </div>
-        <div class="col-12 col-sm-3 pl-0">
+        <div class="col-12 col-sm-4 p-sm-2">
             <%= render 'comments/comment_form', lyric: @lyric, comment: @comment %>
             <%= render 'comments/comment_list', comments: @comments %>
         </div>

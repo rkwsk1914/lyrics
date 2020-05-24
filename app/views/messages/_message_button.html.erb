@@ -3,7 +3,8 @@
     <%= hidden_field_tag :roommate_id, user.id %>
     <% @talkroom = Talkroom.find_by(user_id: current_user.id, roommate_id: user.id) %>
       <%= link_to talkroom_path(@talkroom),
-          class: "btn btn-outline-secondary btn-block text-dark",
+          class: "btn lyric_btn",
+          id: "message",
           style: "text-decoration: none; font-size: 1.2em;" do %>
         <i class="far fa-paper-plane"></i>
       <% end %>
@@ -11,7 +12,8 @@
     <%= form_with(model: current_user.talkrooms.build, class: "col-5 mr-1 p-0",local: true) do |f| %>
       <%= hidden_field_tag :roommate_id, user.id %>
       <%= f.button :type => "submit",
-          class: "btn btn-outline-secondary btn-block text-dark",
+          class: "btn lyric_btn",
+          id: "message_yet",
           style: 'text-decoration: none; font-size: 1.2em;' do %>
         <i class="far fa-paper-plane"></i>
       <% end %>

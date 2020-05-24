@@ -2,7 +2,8 @@
     <%= form_with(model: current_user.favorites.find_by(lyric_id: lyric.id), local: true, method: :delete,) do |f| %>
       <%= hidden_field_tag :lyric_id, lyric.id %>
       <%= f.button :type => "submit",
-          class: "btn btn-outline-secondary btn-block text-dark",
+          class: "btn btn-danger lyric_btn",
+          id: "like",
           style: 'text-decoration: none; font-size: 1.2em;' do %>
         <i class="fas fa-heart"></i>
       <% end %>
@@ -11,7 +12,7 @@
     <%= form_with(model: current_user.favorites.build, local: true) do |f| %>
       <%= hidden_field_tag :lyric_id, lyric.id %>
       <%= f.button :type => "submit",
-          class: "btn btn-outline-secondary btn-block text-dark",
+          class: "btn btn-outline-secondary lyric_btn",
           style: 'text-decoration: none; font-size: 1.2em;' do %>
         <i class="far fa-heart"></i>
       <% end %>

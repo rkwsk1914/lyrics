@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+#user_title {
+  position: relative;
+  top: 60px;
+}
+
+#wrapper {
+  /*margin-top: 110px;
+  margin-bottom: 75px;*/
+  width: 100%;
+  position: relative;
+  background-color: #F9E325;
+  padding-bottom: 70px;
+}
+
+a {
+  text-decoration: none;
+}
+
+#user_link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #222;
+}
+
+#message, #message_yet{
+  background-color: #22D426;
+  color: white;
+}
+
+.lyric_btn{
+  width: 100%;
+  border-radius: 25px;
+  margin: 5px 0;
+}
+#comment{
+  background: #13A5F9;
+  color: white;
+}
+
+#comment_link {
+  text-decoration: none;
+  color: #13A5F9;
+}
+
+#like {
+  background-color: #F90B0B;
+  color: white;
+}
+
+#like_link{
+  text-decoration: none;
+  color: #F90B0B;
+}
+
+#message_yet{
+  width: 238%;
+}
+
+@media screen and (min-width: 576px){
+  #wrapper {
+    padding-bottom: 5px;
+    padding-top: 30px;
+    margin-bottom: 50px;
+    width: 100%;
+  }
+  
+  #comments p {
+  font-size: 0.8em;
+}
+}
