@@ -3,6 +3,7 @@
 .backtolist{
   position: fixed;
   z-index: 1;
+  top: 67px;
 }
 #room {
     position: relative;
@@ -103,6 +104,10 @@ a {
 }
 
 @media screen and (max-width: 576px){
+  body {
+    background-color: #F9E325;
+  }
+  
    #form-ground {
     background-color: #F9E325;
     position: fixed;
