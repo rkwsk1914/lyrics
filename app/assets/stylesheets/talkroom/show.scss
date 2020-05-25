@@ -73,7 +73,6 @@ a {
   overflow-y: scroll;
   -ms-overflow-style: none;    /* IE, Edge 対応 */
   scrollbar-width: none;       /* Firefox 対応 */
-  /*padding-bottom: 50px;*/
   height: 70vh;
 }
 
@@ -106,12 +105,15 @@ a {
 @media screen and (max-width: 576px){
    #form-ground {
     background-color: #F9E325;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
   }
   
   #contentBox{
     top: 38px;
-    height: 80vh;
-    padding-bottom: 30px;
+    height: 81vh;
+    margin-bottom: 40px;
   }
   
   #room{

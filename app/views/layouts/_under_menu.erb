@@ -1,7 +1,6 @@
 <%= stylesheet_link_tag "layouts/under_menu", :media => "all" %>
 
 <% if logged_in? %>
-<% unless current_page?(talkroom_path) %>
 <div class="container d-sm-none">
     <div class="row">
         <div class="col-12 d-flex justify-content-between pl-5" id="under_menu">
@@ -17,5 +16,4 @@
         <div>
     </div>
 </div>
-<% end %>
 <% end %>

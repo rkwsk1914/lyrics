@@ -1,7 +1,7 @@
 <div id="contentBox" class="px-0 col-12" >
 <script>
-$("#contentBox").on('load', () => {
-  $("#contentBox").scrollTop(($("#contentBox")[0].scrollHeight));  
+$(window).on('load', () => {
+    $(window).scrollTop(($("#contentBox").get(0).scrollHeight));
 });
 </script>
     <% if @messages.any? %>
@@ -9,7 +9,7 @@ $("#contentBox").on('load', () => {
         <% @messages.each do |message| %>
             <% user = User.find(message.talkroom.user_id) %>
             <% if user == current_user %>
-                <li class="col-9 offset-3 row d-flex justify-content-end my-4">
+                <li class="col-9 offset-3 row d-flex justify-content-end mt-4">
                     <div class="mt-auto msg col-5 p-0 pr-1 m-0 row d-flex justify-content-end" >
                         <span class="col-12 p-0 text-right"><%= l message.created_at, format: :short %></span>
                         <% if message.read == true %>
@@ -23,7 +23,7 @@ $("#contentBox").on('load', () => {
                     </div>
                 </li>
             <% else %>
-                <li class="col-11 row p-0 d-flex justify-content-start my-4 pl-4">
+                <li class="col-11 row p-0 d-flex justify-content-start mt-4 pl-4">
                     <a class="d-flex justify-content-center mr-2 rounded-circle bg-white user-image" data-toggle="modal" data-target="#other_user" style="cursor: pointer;">
                         <%= render 'users/user_image_button',rem: "2.5rem", user: user %>
                     </a>
