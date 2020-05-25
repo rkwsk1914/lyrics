@@ -2,18 +2,16 @@
 
 <% if logged_in? %>
 <div class="container d-sm-none">
-    <div class="row">
-        <div class="col-12 d-flex justify-content-between pl-5" id="under_menu">
-            <!-- Button trigger modal -->
-            <a data-toggle="modal" data-target="#current_user" class="under_button border-0 rounded-circle">
-                <%= render 'users/user_image_button', rem: "3rem", user: user %>
-            </a>
-            <%= render 'messages/talkroom_button', user: user %>
-            <%#= render 'requests/requests_button' %>
-            <%= link_to new_lyric_path, class: "under_button btn rounded-circle" do %>
-                <i class="fas fa-pen"></i>
-            <% end %>
-        <div>
+    <div class="col-12 row d-flex justify-content-around" id="under_menu">
+        <!-- Button trigger modal -->
+        <a data-toggle="modal" data-target="#current_user" class="under_button border-0 rounded-circle">
+            <%= render 'users/user_image_button', rem: "3rem", user: user %>
+        </a>
+        <%= render 'messages/talkroom_button', user: user %>
+        <%#= render 'requests/requests_button' %>
+        <%= link_to new_lyric_path, class: "under_button btn rounded-circle" do %>
+            <i class="fas fa-pen"></i>
+        <% end %>
     </div>
 </div>
 <% end %>
