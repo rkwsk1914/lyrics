@@ -86,3 +86,5 @@ gem 'activestorage', '~> 5.2.0'
 gem 'carrierwave-audio'
 
 gem 'ruby-sox'
+
+gem "webpacker"

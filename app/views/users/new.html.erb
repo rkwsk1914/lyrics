@@ -12,7 +12,7 @@
                 <span>u</span>
                 <span>p</span>
             </h1>
-            <%= form_with(model: @user, local: true) do |form| %>
+            <%= form_with(model: @user, local: true, id: 'signup_form') do |form| %>
                 <%= render 'layouts/error_message', model: @user %>
                 <div class="form-group row">
                     <div class="col-sm-2">
@@ -60,3 +60,5 @@
     </div>
 </div>
 <div id="blueline" class="col-12"></div>
+
+<%= javascript_pack_tag "validation_vue" %>
