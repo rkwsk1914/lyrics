@@ -18,7 +18,7 @@ const blankCheckpForm = (element, valid) => {
     valid.removeClass('invalid-feedback');
     valid.addClass('valid-feedback');
     valid.removeClass('d-none');
-    msg = 'OK';
+    msg = 'Clear!';
   }
   else{
     element.removeClass('is-valid');
@@ -26,12 +26,15 @@ const blankCheckpForm = (element, valid) => {
     valid.removeClass('valid-feedback');
     valid.addClass('invalid-feedback');
     valid.removeClass('d-none');
-    msg = 'NO';
+    msg = '入力必須です。 / Cannot be blank.';
   }
   return msg;
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+const LastcheckVali = (name, email, password, confim) => {
+  if( name != '' && email.match(/^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/) != null && password.length >= 8 && confim === password) return true;
+  else return false;
+};
 
   const username = Vue.component('user-name', {
   data() {
@@ -85,9 +88,21 @@ document.addEventListener('DOMContentLoaded', () => {
   },
   methods: {
     valiEmail(e) {
+      const pattern = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
       let element = $(e.target);
       let valid = $('.email-valid');
-      this.msg = blankCheckpForm(element,valid);
+      
+      if(this.email.match(pattern) === null ) {
+        element.removeClass('is-valid');
+        element.addClass('is-invalid');
+        valid.removeClass('valid-feedback');
+        valid.addClass('invalid-feedback');
+        valid.removeClass('d-none');
+        this.msg = 'メールアドレスが無効です。/ The email address is invalid.' 
+      }
+      else {
+        this.msg = blankCheckpForm(element,valid);
+      }
     },
   },
   template: `
@@ -124,6 +139,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       else if($('.password-valid').hasClass('d-none') === false){
         let count = String(8 - this.password.length);
+        $(".pas").removeClass('is-valid');
+        $(".pas").addClass('is-invalid');
+        $('.password-valid').removeClass('valid-feedback');
+        $('.password-valid').addClass('invalid-feedback');
         this.msg = 'あと' + count + '文字';
       } 
       
@@ -180,13 +199,27 @@ document.addEventListener('DOMContentLoaded', () => {
     `,
   };
 
+document.addEventListener('DOMContentLoaded', () => {
+  
+  $('#bb').on('click', (e) => {
+    console.log('OK');
+    let name = $('#user_name').val();
+    let email = $('#user_email').val();
+    let password = $('#user_password').val();
+    let confim = $('#user_password_confirmation').val();
+    
+    console.log(LastcheckVali(name, email, password, confim));
+    //if (LastcheckVali(name, email, password, confim) === false )e.preventDefault();
+    
+  });
+
   const app = new Vue({
     el: '#signup_form',
     components: {
     'signup-form': signupForm,
     },
   })
-
+  
 })
 
 
