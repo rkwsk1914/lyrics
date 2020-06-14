@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 6.0.3'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
@@ -81,7 +81,7 @@ gem 'i18n_generators'
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
 
-gem 'activestorage', '~> 5.2.0' 
+gem 'activestorage', '~> 6.0.3' 
 
 gem 'carrierwave-audio'
 
