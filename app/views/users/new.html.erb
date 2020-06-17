@@ -15,7 +15,7 @@
             <%= form_with(model: @user, local: true, id: 'signup_form') do |form| %>
                 <%= render 'layouts/error_message', model: @user %>
                 <signup-form></signup-form>
-                
+
                 <%= form.text_field :name, class: 'd-none' %>
                 <%= form.email_field :email, class: 'd-none' %>
                 <%= form.password_field :password, class: 'd-none' %>
@@ -31,5 +31,3 @@
     </div>
 </div>
 <div id="blueline" class="col-12"></div>
-
-<%= javascript_pack_tag "validation_vue" %>

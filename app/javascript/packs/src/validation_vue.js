@@ -6,7 +6,7 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-import App from '../app.vue'
+//import App from '../app.vue'
 
 
 const blankCheckpForm = (element, valid) => {
@@ -199,7 +199,24 @@ const LastcheckVali = (name, email, password, confim) => {
     `,
   };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
+  const el = document.getElementById('signup_form')
+  if (el) {
+    new Vue({
+      el: el,
+      data() {
+        return {
+          message: 'Hello Vue!'
+        }
+      },
+      components: {
+        'signup-form': signupForm,
+      }
+    })
+  }
+})
+
+/*document.addEventListener('DOMContentLoaded', () => {
   
   $('#bb').on('click', (e) => {
     console.log('OK');
@@ -220,7 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   })
   
-})
+})*/
 
 
 // The above code uses Vue without the compiler, which means you cannot

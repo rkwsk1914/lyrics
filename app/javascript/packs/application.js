@@ -16,3 +16,9 @@
 // const imagePath = (name) => images(name, true)
 
 console.log('Hello World from Webpacker')
+
+import Turbolinks from 'turbolinks'
+
+Turbolinks.start()
+
+import './src/main.js'
